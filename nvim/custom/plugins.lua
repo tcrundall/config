@@ -1,5 +1,13 @@
 local plugins = {
   {
+    "kylechui/nvim-surround",
+    version = "*",
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({})
+    end
+  },
+  {
     "nvim-tree/nvim-tree.lua",
     opts = function()
       return require "custom.configs.nvimtree"
@@ -16,6 +24,7 @@ local plugins = {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
+        "nvim-surround",
         "black",
         "pyright",
         "mypy",
