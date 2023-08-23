@@ -2,7 +2,7 @@
 vim.opt.shell = "bash -l"
 
 -- point nvim python to one with pynvim installed
-vim.g.python3_host_prog = "/Users/tcrundall/Coding/PythonGames/afl-simulator/aflsim/bin/python"
+vim.g.python3_host_prog = "/Users/tcrundall/Coding/PythonGames/aflsimulator/.venv/bin/python"
 
 -- enable providers
 local enabled_providers = {
