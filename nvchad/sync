@@ -1,0 +1,3 @@
+#! /usr/bin/env bash
+
+rsync -av ~/.config/nvim/lua/custom/ custom/
