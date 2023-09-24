@@ -1,2 +1,1 @@
 require("flower")
-print("hello")

@@ -1,2 +1,3 @@
 require("flower.remap")
-print("Hello from the flower") 
+require("flower.settings")
+require("flower.packer")

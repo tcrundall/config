@@ -1,10 +1,18 @@
-
-function ColorMyPencils(color)
-	color = color or "rose-pine"
-	vim.cmd.colorscheme(color)
-
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-end
-
-ColorMyPencils()
+-- function ColorMyPencils(color)
+--     -- available colors:
+--     -- * rose-pine
+--     -- * rose-pine-main
+--     -- * rose-pine-dawn
+--     -- * rose-pine-moon
+--     -- color = color or "rose-pine"
+--     color = "rose-pine"
+--     color = "rose-pine-main"
+--     vim.cmd.colorscheme(color)
+-- 
+--     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+--     vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+--     vim.api.nvim_set_hl(0, "Inactive", { bg = "none" })
+--     vim.api.nvim_set_hl(0, "All", { bg = "none" })
+-- end
+-- 
+-- -- ColorMyPencils()
