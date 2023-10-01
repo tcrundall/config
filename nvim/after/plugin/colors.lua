@@ -16,3 +16,14 @@
 -- end
 -- 
 -- -- ColorMyPencils()
+
+function DarkTheme()
+    vim.cmd.colorscheme("rose-pine-main")
+end
+
+function LightTheme()
+    vim.cmd("colorscheme github_light")
+end
+
+vim.keymap.set("n", "<leader>td", DarkTheme)
+vim.keymap.set("n", "<leader>tl", LightTheme)

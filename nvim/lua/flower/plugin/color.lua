@@ -6,6 +6,5 @@ M.opts = {
         panel = "auto",
     }
 }
-print("Color: ", "Hellllo from color.lua")
 
 return M

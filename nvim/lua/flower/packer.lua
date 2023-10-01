@@ -4,7 +4,7 @@ color = require("flower.plugin.color")
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
-return require("packer").startup(function(use)
+return require("packer").startup(function(use, as)
     -- Packer can manage itself
     use "wbthomason/packer.nvim"
 
@@ -12,9 +12,26 @@ return require("packer").startup(function(use)
         "rose-pine/neovim",
         config = function()
             require("rose-pine").setup(color.opts)
-            vim.cmd.colorscheme("rose-pine")
+            -- vim.cmd.colorscheme("rose-pine")
         end
-    }
+    } 
+
+    use({
+        'projekt0n/github-nvim-theme',
+        config = function()
+            require('github-theme').setup({
+                -- ...
+            })
+
+            -- vim.cmd('colorscheme github_light')
+        end
+    })
+
+    -- use { "catpuccin/nvim", as "catpuccin",
+    --     -- requires = {
+    --     --     {"luarocks-hererocks"}
+    --     -- }
+    -- }
 
     use {  
         'VonHeikemen/lsp-zero.nvim',
