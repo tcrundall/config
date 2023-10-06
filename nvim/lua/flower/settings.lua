@@ -16,3 +16,4 @@ vim.o.autoindent = true
 
 -- Cursor control
 vim.o.scrolloff=8
+

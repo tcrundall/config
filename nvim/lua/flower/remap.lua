@@ -10,6 +10,10 @@ vim.keymap.set("n", "<C-U>", "<C-U>zz")
 -- clear search highlighting
 vim.keymap.set("n", "<Esc>", ":noh<CR>")
 
+-- jump to next tag
+vim.keymap.set("n", "<leader>y", "/@y<CR>vlc")
+vim.keymap.set({"i", "n"}, "<c-y>", "<ESC>/@y<CR>vlc")
+
 -- Using plugin
 -- vim.keymap.set({"n","i"}, "<c-h>", ":<C-U>TmuxNavigateLeft<cr>", { silent = true })
 -- vim.keymap.set({"n","i"}, "<c-j>", ":<C-U>TmuxNavigateDown<cr>", { silent = true })
