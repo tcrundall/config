@@ -26,24 +26,11 @@ vim.keymap.set({"i", "n"}, "<c-y>", "<ESC>/@y<CR>vlc")
 -- vim.keymap.set({"n","i"}, "<c-k>", ":! tmux select-pane -U<CR><CR>", { silent = true })
 -- vim.keymap.set({"n","i"}, "<c-l>", ":! tmux select-pane -R<CR><CR>", { silent = true })
 
-
 -- Splitting
 vim.keymap.set("n", "<leader>v", ":vs<CR>:wincmd l<CR>", { silent = true })
 vim.keymap.set("n", "<leader>h", ":sp<CR>:wincmd j<CR>", { silent = true })
 
-
--- Compile and execute current c file
-vim.keymap.set("n", "<leader>rc", function()
-    vim.cmd(":!clang -pedantic -Wall -std=c11 % && ./a.out")
-end)
-
 -- Source nvim config
-vim.keymap.set("n", "<leader>so",
-function()
-    print "About to source"
-    vim.cmd(":so ~/.config/nvim/init.lua")
-    print "Hello4"
-end
-)
-print "Hello3"
+-- Also redetect filetype to apply file specific settings
+vim.keymap.set("n", "<leader>so", ":so ~/.config/nvim/init.lua<CR>:filetype detect<CR>")
 
