@@ -13,7 +13,7 @@ return require("packer").startup(function(use, as)
         "rose-pine/neovim",
         config = function()
             require("rose-pine").setup(color.opts)
-            -- vim.cmd.colorscheme("rose-pine")
+            vim.cmd.colorscheme("rose-pine")
         end
     } 
 

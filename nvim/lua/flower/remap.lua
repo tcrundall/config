@@ -1,5 +1,6 @@
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "-", vim.cmd.Ex)
 
 -- vim.keymap.set("n", "<leader>x", function() vim.cmd(":q") end)
 vim.keymap.set("n", "<leader>x", ":q<CR>")
@@ -10,7 +11,7 @@ vim.keymap.set("n", "<C-U>", "<C-U>zz")
 -- clear search highlighting
 vim.keymap.set("n", "<Esc>", ":noh<CR>")
 
--- jump to next tag
+-- jump to next custom tag (@y)
 vim.keymap.set("n", "<leader>y", "/@y<CR>vlc")
 vim.keymap.set({"i", "n"}, "<c-y>", "<ESC>/@y<CR>vlc")
 
