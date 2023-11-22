@@ -1,4 +1,5 @@
 -- get custom options, e.g. transparent background
+package.loaded["flower.plugin.color"] = false
 color = require("flower.plugin.color")
 
 -- Only required if you have packer configured as `opt`
