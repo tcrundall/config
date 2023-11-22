@@ -30,3 +30,20 @@ vim.keymap.set({"i", "n"}, "<c-y>", "<ESC>/@y<CR>vlc")
 -- Splitting
 vim.keymap.set("n", "<leader>v", ":vs<CR>:wincmd l<CR>", { silent = true })
 vim.keymap.set("n", "<leader>h", ":sp<CR>:wincmd j<CR>", { silent = true })
+
+
+-- Compile and execute current c file
+vim.keymap.set("n", "<leader>rc", function()
+    vim.cmd(":!clang -pedantic -Wall -std=c11 % && ./a.out")
+end)
+
+-- Source nvim config
+vim.keymap.set("n", "<leader>so",
+function()
+    print "About to source"
+    vim.cmd(":so ~/.config/nvim/init.lua")
+    print "Hello4"
+end
+)
+print "Hello3"
+
