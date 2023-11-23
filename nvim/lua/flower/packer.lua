@@ -58,7 +58,7 @@ return require("packer").startup(function(use, as)
   use "theprimeagen/harpoon"
   use "nvim-lua/plenary.nvim"
 
-  -- Personal touches
+  -- Smooth transitions between tmux and nvim panes
   use "christoomey/vim-tmux-navigator"
 
   -- File tree
@@ -68,4 +68,24 @@ return require("packer").startup(function(use, as)
       'nvim-tree/nvim-web-devicons', -- optional
     },
   }
+
+  -- Pretty markdown
+  --  use {
+  --    "lukas-reineke/headlines.nvim",
+  --    after = "nvim-treesitter",
+  --    config = function()
+  --      require("headlines").setup()
+  --    end,
+  --  }
+
+  use({
+    'jakewvincent/mkdnflow.nvim',
+    config = function()
+      require('mkdnflow').setup({
+        -- Config goes here; leave blank for defaults
+      })
+    end
+  })
+
+  use 'tpope/vim-commentary'
 end)
