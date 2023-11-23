@@ -15,5 +15,17 @@ vim.o.expandtab = true
 vim.o.autoindent = true
 
 -- Cursor control
-vim.o.scrolloff=8
+vim.o.scrolloff = 8
 
+-- Buffer settings for auto-read and -write
+vim.o.autoread = true
+vim.api.nvim_create_autocmd(
+  { "FocusGained", "BufEnter", "BufWinEnter" },
+  {
+    command = ":silent! !"
+  }
+)
+vim.api.nvim_create_autocmd(
+  { "FocusLost", "WinLeave" },
+  { command = ":silent! noautocmd w" }
+)
