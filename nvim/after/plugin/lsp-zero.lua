@@ -1,24 +1,28 @@
 local lsp_zero = require('lsp-zero')
 local lspconfig = require("lspconfig")
+-- local on_attach = require("config.on_attach")
 
 lsp_zero.on_attach(function(client, bufnr)
   -- see :help lsp-zero-keybindings
   -- to learn the available actions
-  lsp_zero.default_keymaps({buffer = bufnr})
+  lsp_zero.default_keymaps({ buffer = bufnr })
+
+  -- autoformat on write
+  lsp_zero.buffer_autoformat()
 end)
 
 -- setup clang...?
 -- lspconfig.clangd.setup{}
 lsp_zero.setup_servers({
-    "clangd",
+  "clangd",
 })
 
--- setup lua lsp: 
+-- setup lua lsp:
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#lua_ls
 lspconfig.lua_ls.setup {
   on_init = function(client)
     local path = client.workspace_folders[1].name
-    if not vim.loop.fs_stat(path..'/.luarc.json') and not vim.loop.fs_stat(path..'/.luarc.jsonc') then
+    if not vim.loop.fs_stat(path .. '/.luarc.json') and not vim.loop.fs_stat(path .. '/.luarc.jsonc') then
       client.config.settings = vim.tbl_deep_extend('force', client.config.settings, {
         Lua = {
           runtime = {
@@ -27,7 +31,7 @@ lspconfig.lua_ls.setup {
             version = 'LuaJIT'
           },
           -- Tell lua about the vim global
-          diagnostics = { globals = {'vim'} },
+          diagnostics = { globals = { 'vim' } },
           -- Make the server aware of Neovim runtime files
           workspace = {
             checkThirdParty = false,
@@ -48,12 +52,19 @@ lspconfig.lua_ls.setup {
   end
 }
 
+-- setup python LSP pyright
+lspconfig.pyright.setup({})
+lspconfig.ruff_lsp.setup({})
 
--- no idea what this does
+-- setup go LSP server
+-- lspconfig.golangci_lint_ls.setup {}
+lspconfig.gopls.setup({})
+
+
+-- allow selection with "enter"
 local cmp = require('cmp')
-
 cmp.setup({
   mapping = cmp.mapping.preset.insert({
-    ['<CR>'] = cmp.mapping.confirm({select = false}),
+    ['<CR>'] = cmp.mapping.confirm({ select = false }),
   })
 })

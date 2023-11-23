@@ -13,14 +13,14 @@ vim.keymap.set("n", "<Esc>", ":noh<CR>")
 
 -- jump to next custom tag (@y)
 vim.keymap.set("n", "<leader>y", "/@y<CR>vlc")
-vim.keymap.set({"i", "n"}, "<c-y>", "<ESC>/@y<CR>vlc")
+vim.keymap.set({ "i", "n" }, "<c-y>", "<ESC>/@y<CR>vlc")
 
 -- Using plugin
 -- vim.keymap.set({"n","i"}, "<c-h>", ":<C-U>TmuxNavigateLeft<cr>", { silent = true })
 -- vim.keymap.set({"n","i"}, "<c-j>", ":<C-U>TmuxNavigateDown<cr>", { silent = true })
 -- vim.keymap.set({"n","i"}, "<c-k>", ":<C-U>TmuxNavigateUp<cr>", { silent = true })
 -- vim.keymap.set({"n","i"}, "<c-l>", ":<C-U>TmuxNavigateRight<cr>", { silent = true })
--- 
+--
 -- Custom attempt
 -- vim.keymap.set({"n","i"}, "<c-h>", ":! tmux select-pane -L<CR><CR>", { silent = true })
 -- vim.keymap.set({"n","i"}, "<c-j>", ":! tmux select-pane -D<CR><CR>", { silent = true })
@@ -34,4 +34,3 @@ vim.keymap.set("n", "<leader>h", ":sp<CR>:wincmd j<CR>", { silent = true })
 -- Source nvim config
 -- Also redetect filetype to apply file specific settings
 vim.keymap.set("n", "<leader>so", ":so ~/.config/nvim/init.lua<CR>:filetype detect<CR>")
-
