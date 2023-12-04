@@ -69,6 +69,9 @@ return require("packer").startup(function(use, as)
     },
   }
 
+  -- commenting out stuff (gc<motion>)
+  use 'tpope/vim-commentary'
+
   -- Pretty markdown
   --  use {
   --    "lukas-reineke/headlines.nvim",
@@ -78,14 +81,33 @@ return require("packer").startup(function(use, as)
   --    end,
   --  }
 
-  use({
-    'jakewvincent/mkdnflow.nvim',
-    config = function()
-      require('mkdnflow').setup({
-        -- Config goes here; leave blank for defaults
-      })
-    end
-  })
+  -- Pretty markdown! Includes link concealment and other hotkeys
+  use 'ixru/nvim-markdown'
 
-  use 'tpope/vim-commentary'
+  -- use({
+  --   'jakewvincent/mkdnflow.nvim',
+  --   config = function()
+  --     require('mkdnflow').setup({
+  --       -- Config goes here; leave blank for defaults
+  --     })
+  --   end
+  -- })
+
+  -- -- orgmode
+  -- use({
+  --   'nvim-orgmode/orgmode',
+  --   config = function()
+  --     require('orgmode').setup_ts_grammar()
+  --     require('orgmode').setup {}
+  --   end,
+  --   requires = {
+  --     { 'hrsh7th/nvim-cmp' },
+  --   }
+  -- })
+
+  -- vimwiki for nvim
+  use({
+    'serenevoid/kiwi.nvim',
+    requires = { { 'nvim-lua/plenary.nvim' } }
+  })
 end)

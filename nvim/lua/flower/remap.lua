@@ -1,6 +1,4 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
-vim.keymap.set("n", "-", vim.cmd.Ex)
 
 -- vim.keymap.set("n", "<leader>x", function() vim.cmd(":q") end)
 vim.keymap.set("n", "<leader>x", ":q<CR>")
@@ -34,3 +32,9 @@ vim.keymap.set("n", "<leader>h", ":sp<CR>:wincmd j<CR>", { silent = true })
 -- Source nvim config
 -- Also redetect filetype to apply file specific settings
 vim.keymap.set("n", "<leader>so", ":so ~/.config/nvim/init.lua<CR>:filetype detect<CR>")
+
+-- [C]opy whole [F]ile
+vim.keymap.set("n", "<leader>cf", "GVgg\"+y<C-O><C-O>zz")
+
+-- [H]ighlight whole [F]ile
+vim.keymap.set("n", "<leader>hf", "GVgg")

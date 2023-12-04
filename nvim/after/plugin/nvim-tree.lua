@@ -1,15 +1,17 @@
 -- local nvimTree = require("nvim-tree")
 local api = require("nvim-tree.api")
-vim.keymap.set("n", "-", api.tree.open)
-vim.keymap.set("n", "<leader>pt", api.tree.toggle)
+-- project [T]ree [T]oggle
+vim.keymap.set("n", "<leader>tt", api.tree.toggle)
+-- project [T]ree [F]ocus
 vim.keymap.set("n", "<leader>tf", api.tree.focus)
 
 local telescope_builtin = require('telescope.builtin')
 local telescope_utils = require('telescope.utils')
 
+-- [G]rep [L]ocal
 -- Do a "local" grep. Either from parent dir of current buf
 -- or from dir under cursor in tree
-vim.keymap.set("n", "<leader>pl",
+vim.keymap.set("n", "<leader>gl",
   function()
     local target_dir
 
