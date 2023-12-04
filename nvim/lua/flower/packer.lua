@@ -35,6 +35,29 @@ return require("packer").startup(function(use, as)
   -- }
 
   use {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "saadparwaiz1/cmp_luasnip",
+      "hrsh7th/cmp-nvim-lua",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-cmdline",
+    },
+    config = function()
+      require("cmp").setup({
+        sources = {
+          { name = "nvim_lsp" },
+          { name = "buffer" },
+          { name = "path" },
+          { name = "luasnip" },
+          { name = "nvim_lua" },
+        }
+      })
+    end
+  }
+
+  use {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v3.x',
     requires = {
