@@ -17,6 +17,9 @@ lsp_zero.setup_servers({
   "clangd",
 })
 
+-- setup biome for javascript
+require 'lspconfig'.biome.setup {}
+
 -- setup lua lsp:
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#lua_ls
 lspconfig.lua_ls.setup {
