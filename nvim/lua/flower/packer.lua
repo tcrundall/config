@@ -44,17 +44,17 @@ return require("packer").startup(function(use, as)
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-cmdline",
     },
-    config = function()
-      require("cmp").setup({
-        sources = {
-          { name = "nvim_lsp" },
-          { name = "buffer" },
-          { name = "path" },
-          { name = "luasnip" },
-          { name = "nvim_lua" },
-        }
-      })
-    end
+    -- config = function()
+    --   require("cmp").setup({
+    --     sources = {
+    --       { name = "nvim_lsp" },
+    --       { name = "buffer" },
+    --       { name = "path" },
+    --       { name = "luasnip" },
+    --       { name = "nvim_lua" },
+    --     }
+    --   })
+    -- end
   }
 
   -- setting up snippets
