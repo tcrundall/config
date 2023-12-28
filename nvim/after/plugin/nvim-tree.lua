@@ -1,9 +1,26 @@
 -- local nvimTree = require("nvim-tree")
 local api = require("nvim-tree.api")
+
 -- project [T]ree [T]oggle
 vim.keymap.set("n", "<leader>tt", api.tree.toggle)
+
 -- project [T]ree [F]ocus
 vim.keymap.set("n", "<leader>tf", api.tree.focus)
+
+-- project [T]ree [L]ocate current buffer
+vim.keymap.set("n", "<leader>tl",
+function()
+  -- api.tree.find_file({find_file=true, focus=true})
+  api.tree.toggle({find_file=true, focus=true})
+end
+)
+
+-- project [T]ree locate current [B]uffer
+vim.keymap.set("n", "<leader>tb", function()
+  api.tree.find_file()
+  api.tree.focus()
+end)
+
 
 local telescope_builtin = require('telescope.builtin')
 local telescope_utils = require('telescope.utils')

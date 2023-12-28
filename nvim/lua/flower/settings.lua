@@ -29,3 +29,6 @@ vim.api.nvim_create_autocmd(
   { "FocusLost", "WinLeave" },
   { command = ":silent! noautocmd w" }
 )
+
+-- Fold options
+vim.o.foldmethod = "indent"

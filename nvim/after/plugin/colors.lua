@@ -25,5 +25,8 @@ function LightTheme()
     vim.cmd("colorscheme github_light")
 end
 
-vim.keymap.set("n", "<leader>td", DarkTheme)
-vim.keymap.set("n", "<leader>tl", LightTheme)
+-- [TH]eme [D]ark
+vim.keymap.set("n", "<leader>thd", DarkTheme)
+
+-- [TH]eme [L]ight
+vim.keymap.set("n", "<leader>thl", LightTheme)
