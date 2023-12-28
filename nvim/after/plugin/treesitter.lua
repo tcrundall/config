@@ -18,9 +18,4 @@ require 'nvim-treesitter.configs'.setup {
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
   },
-
-  -- added only to try and fix indentation in orgmode
-  -- indent = {
-  --   enable = false
-  -- }
 }

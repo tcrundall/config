@@ -63,6 +63,12 @@ lspconfig.ruff_lsp.setup({})
 -- lspconfig.golangci_lint_ls.setup {}
 lspconfig.gopls.setup({})
 
+-- setup C# LSP server
+-- requires `dotnet tool install --global csharp-ls`
+--
+-- dotnet tool install --global csharp-ls --version 0.5.7
+lspconfig.csharp_ls.setup({})
+
 
 -- allow selection with "enter"
 local cmp = require('cmp')
@@ -71,3 +77,6 @@ cmp.setup({
     ['<CR>'] = cmp.mapping.confirm({ select = false }),
   })
 })
+
+-- mappings
+vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover)
