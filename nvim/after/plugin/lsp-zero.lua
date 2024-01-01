@@ -82,4 +82,4 @@ cmp.setup({
 })
 
 -- mappings
-vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover)
+vim.keymap.set("n", "<leader>K", vim.lsp.buf.hover)
