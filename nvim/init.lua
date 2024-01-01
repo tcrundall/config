@@ -1,11 +1,13 @@
 local packages = {
   "flower",
-  "fun.fun"
+  "fun.fun",
+  "luasnippets",
 }
+-- require("luasnippets")
 
-for _, pac in ipairs(packages) do
-  package.loaded[pac] = false
-  require(pac)
+for _, pack in ipairs(packages) do
+  package.loaded[pack] = false
+  require(pack)
 end
 
 local fun = require("fun.fun")

@@ -20,6 +20,9 @@ lsp_zero.setup_servers({
 -- setup biome for javascript
 require 'lspconfig'.biome.setup {}
 
+-- setup tsserver for javascript/typescript
+require 'lspconfig'.tsserver.setup {}
+
 -- setup lua lsp:
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#lua_ls
 lspconfig.lua_ls.setup {

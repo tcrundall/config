@@ -9,10 +9,10 @@ vim.keymap.set("n", "<leader>tf", api.tree.focus)
 
 -- project [T]ree [L]ocate current buffer
 vim.keymap.set("n", "<leader>tl",
-function()
-  -- api.tree.find_file({find_file=true, focus=true})
-  api.tree.toggle({find_file=true, focus=true})
-end
+  function()
+    -- api.tree.find_file({find_file=true, focus=true})
+    api.tree.toggle({ find_file = true, focus = true })
+  end
 )
 
 -- project [T]ree locate current [B]uffer
@@ -38,11 +38,11 @@ vim.keymap.set("n", "<leader>gl",
         current_node = current_node.parent
       end
       target_dir = current_node.absolute_path
-      print(target_dir)
+      -- print(target_dir)
     else
       target_dir = telescope_utils.buffer_dir()
     end
-    print("Got target_dir: " .. target_dir)
+    -- print("Got target_dir: " .. target_dir)
 
     telescope_builtin.live_grep({ cwd = target_dir })
   end
