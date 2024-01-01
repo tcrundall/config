@@ -1,4 +1,4 @@
-print("Entering plugin.cmp")
+-- print("Entering plugin.cmp")
 
 local cmp = require("cmp")
 local luasnip = require("luasnip")
@@ -18,4 +18,4 @@ cmp.setup({
   }
 })
 
-print("Leaving plugin.cmp")
+-- print("Leaving plugin.cmp")

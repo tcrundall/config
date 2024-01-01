@@ -1,4 +1,4 @@
-print("Entering plugin.luasnip")
+-- print("Entering plugin.luasnip")
 
 -- Needed for all snippets?
 
@@ -92,4 +92,4 @@ end, { silent = true })
 -- vim.cmd([[autocmd BufEnter */snippets/*.lua nnoremap <silent> <buffer> <CR> /-- End Refactoring --<CR>O<Esc>O]])
 
 
-print("Leaving plugin.luasnip")
+-- print("Leaving plugin.luasnip")

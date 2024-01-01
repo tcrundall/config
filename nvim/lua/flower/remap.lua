@@ -26,18 +26,18 @@ vim.keymap.set({ "i", "n" }, "<c-y>", "<ESC>/@y<CR>vlc")
 -- vim.keymap.set({"n","i"}, "<c-l>", ":! tmux select-pane -R<CR><CR>", { silent = true })
 
 -- Splitting
-vim.keymap.set("n", "<leader>V", ":vs<CR>:wincmd l<CR>", { silent = true })
-vim.keymap.set("n", "<leader>H", ":sp<CR>:wincmd j<CR>", { silent = true })
+vim.keymap.set("n", "<leader>v", ":vs<CR>:wincmd l<CR>", { silent = true })
+vim.keymap.set("n", "<leader>h", ":sp<CR>:wincmd j<CR>", { silent = true })
 
 -- Source nvim config
 -- Also redetect filetype to apply file specific settings
 vim.keymap.set("n", "<leader>so", ":so ~/.config/nvim/init.lua<CR>:filetype detect<CR>")
 
 -- [C]opy whole [F]ile
-vim.keymap.set("n", "<leader>fc", "GVgg\"+y<C-O><C-O>zz")
+vim.keymap.set("n", "<leader>cf", "GVgg\"+y<C-O><C-O>zz")
 
 -- [H]ighlight whole [F]ile
-vim.keymap.set("n", "<leader>fh", "GVgg")
+vim.keymap.set("n", "<leader>hf", "GVgg")
 
 ------ not versioned currently --------
 -- [C]opy highlight to [C]lipboard
@@ -59,3 +59,5 @@ vim.keymap.set("i", "<S-Tab>", "<ESC><<a")
 vim.keymap.set("v", "<S-Tab>", "<gv")
 vim.keymap.set("v", "<Tab>", ">gv")
 
+-- Add selection to [C]lip[B]oard
+vim.keymap.set("v", "<leader>cb", "\"+y:echo \"yanked to clipboard\"<CR>")

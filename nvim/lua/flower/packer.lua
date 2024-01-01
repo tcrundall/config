@@ -144,4 +144,7 @@ return require("packer").startup(function(use, as)
     'serenevoid/kiwi.nvim',
     requires = { { 'nvim-lua/plenary.nvim' } }
   })
+
+  -- for case matching replacement
+  use({ 'tpope/vim-abolish' })
 end)
