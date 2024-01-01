@@ -26,8 +26,8 @@ vim.keymap.set({ "i", "n" }, "<c-y>", "<ESC>/@y<CR>vlc")
 -- vim.keymap.set({"n","i"}, "<c-l>", ":! tmux select-pane -R<CR><CR>", { silent = true })
 
 -- Splitting
-vim.keymap.set("n", "<leader>v", ":vs<CR>:wincmd l<CR>", { silent = true })
-vim.keymap.set("n", "<leader>h", ":sp<CR>:wincmd j<CR>", { silent = true })
+vim.keymap.set("n", "<leader>V", ":vs<CR>:wincmd l<CR>", { silent = true })
+vim.keymap.set("n", "<leader>H", ":sp<CR>:wincmd j<CR>", { silent = true })
 
 -- Source nvim config
 -- Also redetect filetype to apply file specific settings
@@ -36,11 +36,11 @@ vim.keymap.set("n", "<leader>so", ":so ~/.config/nvim/init.lua<CR>:filetype dete
 -- [C]opy whole [F]ile
 vim.keymap.set("n", "<leader>cf", "GVgg\"+y<C-O><C-O>zz")
 
--- [H]ighlight whole [F]ile
-vim.keymap.set("n", "<leader>hf", "GVgg")
+-- whole [F]ile, [H]ighlight
+vim.keymap.set("n", "<leader>fh", "GVgg")
 
 ------ not versioned currently --------
--- [C]opy highlight to [C]lipboard
+-- copy highlight to [C]lip[B]oard
 vim.keymap.set("v", "<leader>cb", "\"+y")
 
 -- widen pane
@@ -48,6 +48,12 @@ vim.keymap.set("n", "<leader>l", "<C-W>10>")
 
 -- thinnen pane
 vim.keymap.set("n", "<leader>h", "<C-W>10<")
+
+-- heighten pane
+vim.keymap.set("n", "<leader>j", "<C-W>5+")
+
+-- shorten pane
+vim.keymap.set("n", "<leader>k", "<C-W>5-")
 
 -- avoid putting when mistyping maps
 vim.keymap.set("n", "<leader>p", ":echo 'avoided putting!'<CR>")
