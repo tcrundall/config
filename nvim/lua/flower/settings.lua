@@ -32,26 +32,4 @@ vim.api.nvim_create_autocmd(
 
 -- Fold options
 vim.o.foldmethod = "indent"
-vim.api.nvim_create_autocmd(
--- { "BufEnter" },
--- { "BufRead" },
-  { "BufReadPost" },
-  -- { command = ":%foldopen!" }
-  -- { command = ":lua print('test') | let &foldlevel = max(map(range(1, line('$')), 'foldlevel(v:val)'))" }
-  -- { command = ":lua print('test') -- print('hello')" }
-  -- { command = "echo 'hello' | echo 'bye'" }
-  -- { command = ":echo 'unfolding' | :normal zR | :echo 'bye'" }
-  {
-    callback = function()
-      print("Buf read!!!")
-      print(vim.api.nvim_buf_get_name(0))
-      print("Expanding all tabs")
-      vim.cmd(":normal zR")
-      vim.cmd(":normal zR")
-      print("Done")
-      -- vim.cmd("set foldlevel?")
-      -- vim.cmd(":normal zm")
-    end
-  }
-)
--- vim.o.foldlevel = 999
+vim.o.foldlevel = 999
