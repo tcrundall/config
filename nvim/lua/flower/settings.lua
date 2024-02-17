@@ -32,3 +32,4 @@ vim.api.nvim_create_autocmd(
 
 -- Fold options
 vim.o.foldmethod = "indent"
+vim.o.foldlevelstart = 1
