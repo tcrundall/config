@@ -9,6 +9,8 @@ return require("packer").startup(function(use, as)
   -- Packer can manage itself
   use "wbthomason/packer.nvim"
 
+
+  -- will be broken until I switch from packer to lazy.nvim
   use {
     "rose-pine/neovim",
     config = function()

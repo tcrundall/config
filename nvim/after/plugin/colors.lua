@@ -18,8 +18,9 @@
 -- -- ColorMyPencils()
 
 function DarkTheme()
-  -- vim.cmd.colorscheme("rose-pine-main")
-  vim.cmd.colorscheme("github_dark")
+  -- vim.cmd.colorscheme("rose-pine-main") -- rosepine broken with packer? update to lazy.nvim
+  -- vim.cmd.colorscheme("github_dark")
+  vim.cmd('colorscheme github_dark_default')
 end
 
 function LightTheme()
