@@ -121,6 +121,28 @@ lspconfig.omnisharp.setup({
   analyze_open_documents_only = false,
 })
 
+
+-- azure pipelines
+-- NOTE: Seems to attach correctly, but doesn't seem to do anything...
+lspconfig.azure_pipelines_ls.setup {
+  settings = {
+    yaml = {
+      schemas = {
+        ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] = {
+          "/azure-pipeline*.y*l",
+          "/*.azure*",
+          "Azure-Pipelines/**/*.y*l",
+          "Pipelines/*.y*l",
+        },
+      },
+    },
+  },
+}
+
+-- bash
+lspconfig.bashls.setup({})
+
+
 -- allow selection with "enter"
 local cmp = require('cmp')
 cmp.setup({
@@ -129,5 +151,7 @@ cmp.setup({
   })
 })
 
+
 -- mappings
+-- unnecessary, sicne "K" is already this mapping
 vim.keymap.set("n", "<leader>K", vim.lsp.buf.hover)
