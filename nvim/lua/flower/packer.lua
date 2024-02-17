@@ -13,7 +13,7 @@ return require("packer").startup(function(use, as)
     "rose-pine/neovim",
     config = function()
       require("rose-pine").setup(Color.opts)
-      vim.cmd.colorscheme("rose-pine")
+      -- vim.cmd.colorscheme("rose-pine-dawn")
     end
   }
 
@@ -25,6 +25,9 @@ return require("packer").startup(function(use, as)
       })
 
       -- vim.cmd('colorscheme github_light')
+      -- vim.cmd('colorscheme github_dark')
+      -- vim.cmd('colorscheme github_dark_dimmed')
+      vim.cmd('colorscheme github_dark_default')
     end
   })
 

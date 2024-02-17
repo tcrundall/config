@@ -58,9 +58,15 @@ lspconfig.lua_ls.setup {
   end
 }
 
+-- PYTHON ------------------------------------
+
+-- work uses black, flake8 and isort...
 -- setup python LSP pyright
 lspconfig.pyright.setup({})
-lspconfig.ruff_lsp.setup({})
+-- lspconfig.ruff_lsp.setup({})
+
+----------------------------------------------
+
 
 -- setup go LSP server
 -- lspconfig.golangci_lint_ls.setup {}
