@@ -1,4 +1,4 @@
-vim.g.mapleader = " "
+-- vim.g.mapleader = " "
 
 -- vim.keymap.set("n", "<leader>x", function() vim.cmd(":q") end)
 vim.keymap.set("n", "<leader>x", ":q<CR>")
