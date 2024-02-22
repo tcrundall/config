@@ -155,3 +155,14 @@ cmp.setup({
 -- mappings
 -- unnecessary, sicne "K" is already this mapping
 vim.keymap.set("n", "<leader>K", vim.lsp.buf.hover)
+
+
+-- IGNORE: this is default provided with go: vim.lsp.buf.type_definition()
+-- jump to definition from within a `hover` "show definition" floating pane
+-- Context: the floating pane is interpreted as a "lua" file, so jump to def.
+-- tries to use lua LSP
+-- two approaches:
+--   1) Call go to definition but with the right file type
+--   2) Copy word, leave floating pane, and call go to def. with copied word
+-- TODO
+--  identify if I'm in a pane
