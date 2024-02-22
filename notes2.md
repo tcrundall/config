@@ -10,3 +10,7 @@
 - [ ] azure pipelines LSP
 - [x] set up version control on work laptop
 - [ ] replace/configure tms better
+
+
+## TODO
+- read through lsp-zero.txt
