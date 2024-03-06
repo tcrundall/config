@@ -32,4 +32,7 @@ vim.api.nvim_create_autocmd(
 
 -- Fold options
 vim.o.foldmethod = "indent"
-vim.o.foldlevelstart = 1
+vim.o.foldlevelstart = -1
+vim.o.foldlevel = 99
+-- vim.o.foldmethod = "syntax"
+-- vim.o.foldlevelstart = 1  -- If this is on, resets fold on each BufEnter
