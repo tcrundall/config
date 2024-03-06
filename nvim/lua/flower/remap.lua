@@ -6,6 +6,9 @@ vim.keymap.set("n", "<leader>x", ":q<CR>")
 vim.keymap.set("n", "<C-D>", "<C-D>zz")
 vim.keymap.set("n", "<C-U>", "<C-U>zz")
 
+-- when searching, position searched element
+vim.keymap.set("n", "n", "nzt")
+
 -- clear search highlighting
 vim.keymap.set("n", "<Esc>", ":noh<CR>")
 
