@@ -4,8 +4,8 @@ return {
   "tpope/vim-commentary",
   -- "nvim-lua/plenary.nvim",
   "rose-pine/neovim",
-  { "nvim-lualine/lualine.nvim", config = {}, },
-  { "lewis6991/gitsigns.nvim",   config = {}, },
+  { "nvim-lualine/lualine.nvim", opts = {}, },
+  { "lewis6991/gitsigns.nvim",   opts = {}, },
   {
     "mbbill/undotree",
     keys = { { "<leader>u", ":UndotreeToggle<cr>", }, },
