@@ -1,4 +1,6 @@
 return {
+  "nvim-lualine/lualine.nvim",
+  "lewis6991/gitsigns.nvim",
   {
     "rose-pine/neovim",
     name = "rose-pine",
@@ -35,9 +37,7 @@ return {
   -- setting up snippets
   {
     "L3MON4D3/LuaSnip",
-    -- follow latest release.
-    tag = "v2.0.0", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-    -- install jsregexp (optional!:).
+    version = "v2.x",
     build = "make install_jsregexp"
   },
   { "saadparwaiz1/cmp_luasnip" },
@@ -56,10 +56,7 @@ return {
     }
   },
   "nvim-treesitter/nvim-treesitter",
-  -- {
-  -- 	"nvim-treesitter/playground",
-  -- 	{ build = ":TSUpdate" },
-  -- },
+  -- Note, playground is now deprecated. Use :InspectTree
   {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.3",
