@@ -35,21 +35,22 @@ return {
   -- },)
 
   -- vimwiki for nvim
-  {
-    "serenevoid/kiwi.nvim",
-    dependencies = { { "nvim-lua/plenary.nvim" } },
-    config = function()
-      local kiwi = require("kiwi")
-      kiwi.setup({
-        {
-          name = "personal",
-          path = "/Users/tcrundall/Notes"
-        }
-      })
+  -- {
+  --   "serenevoid/kiwi.nvim",
+  --   dependencies = { { "nvim-lua/plenary.nvim" } },
+  --   config = function()
+  --     local kiwi = require("kiwi")
+  --     kiwi.setup({
+  --       {
+  --         name = "personal",
+  --         -- path = "/Users/tcrundall/Notes"
+  --         path = "/Users/tcrundall/Notes"
+  --       }
+  --     })
 
-      -- Necessary keybindings
-      vim.keymap.set('n', '<leader>ww', kiwi.open_wiki_index, {})
-      vim.keymap.set('n', '<leader>wx', kiwi.todo.toggle, {})
-    end
-  }
+  --     -- Necessary keybindings
+  --     vim.keymap.set('n', '<leader>ww', kiwi.open_wiki_index, {})
+  --     vim.keymap.set('n', '<leader>wx', kiwi.todo.toggle, {})
+  --   end
+  -- }
 }
