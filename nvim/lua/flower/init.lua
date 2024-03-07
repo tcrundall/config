@@ -1,7 +1,6 @@
 local packages = {
   "flower.remap",
   "flower.settings",
-  "flower.packer",
 }
 
 -- Invalidating cache to force resourcing
