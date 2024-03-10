@@ -8,6 +8,9 @@ vim.o.ruler = true
 
 vim.o.showmode = false
 
+-- sync clipboard between OS and Neovim
+vim.opt.clipboard = 'unnamedplus'
+
 -- Setting tabspace behaviour
 vim.o.tabstop = 2
 vim.o.softtabstop = 2
