@@ -1,5 +1,12 @@
 # Notes
 
+## Tips
+
+Open nvim with kickstart config using following command:
+```bash
+  NVIM_APPNAME=nvim-kickstart nvim .
+```
+
 ## Wishlist
 
 - [x] jump to definition from within show definition pane
