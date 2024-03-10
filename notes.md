@@ -10,7 +10,11 @@
 - [ ] azure pipelines LSP
 - [x] set up version control on work laptop
 - [ ] replace/configure tms better
-
+- [ ] Merge kickstart with current 
+  - [ ] Split plugins into parts
+- [ ] Smooth notes system
+- [ ] Set up incremental selection
 
 ## TODO
 - read through lsp-zero.txt
+

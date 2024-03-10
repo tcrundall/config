@@ -1,36 +1,14 @@
-require 'custom.settings'
-require 'custom.mappings'
+-- disable netrw at the very start to avoid conflict with nvim-tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
-local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
-  local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
-  vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
-end ---@diagnostic disable-next-line: undefined-field
-vim.opt.rtp:prepend(lazypath)
+-- set up leader before lazy so mappings can be configured
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
--- [[ Configure and install plugins ]]
-local opts = {
-  ui = {
-    size = { width = 0.9, height = 0.9 },
-    icons = vim.g.have_nerd_font and {} or {
-      cmd = '⌘',
-      config = '🛠',
-      event = '📅',
-      ft = '📂',
-      init = '⚙',
-      keys = '🗝',
-      plugin = '🔌',
-      runtime = '💻',
-      require = '🌙',
-      source = '📄',
-      start = '🚀',
-      task = '📌',
-      lazy = '💤 ',
-    },
-  },
-}
-
-require('lazy').setup('plugins', opts)
+require 'setup-lazy'
+print 'Requiring custom'
+require 'custom'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

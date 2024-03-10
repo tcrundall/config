@@ -1,9 +1,6 @@
--- disable netrw at the very start to avoid conflict with nvim-tree
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+-- set shell to bash
+-- avoids super laggy tmux switch
+vim.o.shell = '/bin/bash'
 
 vim.g.have_nerd_font = true
 
