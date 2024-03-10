@@ -9,6 +9,10 @@ vim.opt.rtp:prepend(lazypath)
 
 -- [[ Configure and install plugins ]]
 local opts = {
+  change_detection = {
+    enabled = true,
+    notify = false,
+  },
   ui = {
     size = { width = 0.9, height = 0.9 },
     icons = vim.g.have_nerd_font and {} or {

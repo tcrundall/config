@@ -23,18 +23,18 @@ function SetBackground()
     -- Inferred:
     -- Needed for rose-pine but not for tokyonight
     -- Changing this also changes color of fugitive text
-    'Normal',
-    'NormalNC',
+    -- 'Normal',
+    -- 'NormalNC',
 
-    'NormalFloat',
+    -- 'NormalFloat',
     -- 'NormalSB', -- Side Bars, e.g. help in TokyoNight
 
-    'Inactive',
+    -- 'Inactive',
     'SignColumnSB',
     'MsgArea',
-    'WinBar',
-    -- 'WinSeparator',
-    'All',
+    -- 'WinBar',
+    'WinSeparator',
+    -- 'All',
 
     -- Telescope
     'TelescopeNormal',
@@ -57,13 +57,13 @@ function SetBackground()
 end
 
 function DarkTheme()
-  -- vim.cmd.colorscheme 'tokyonight-night'
-  vim.cmd.colorscheme 'rose-pine-main'
+  vim.cmd.colorscheme 'tokyonight-night'
+  -- vim.cmd.colorscheme 'rose-pine-main'
   SetBackground()
 end
 function DarkThemeOpaque()
-  vim.cmd.colorscheme 'tokyonight-night'
-  -- vim.cmd.colorscheme 'rose-pine-main'
+  -- vim.cmd.colorscheme 'tokyonight-night'
+  vim.cmd.colorscheme 'rose-pine-main'
 end
 
 function LightTheme()
