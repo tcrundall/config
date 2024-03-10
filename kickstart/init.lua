@@ -7,7 +7,6 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 require 'setup-lazy'
-print 'Requiring custom'
 require 'custom'
 
 -- The line beneath this is called `modeline`. See `:help modeline`

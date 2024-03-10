@@ -18,7 +18,10 @@ Open nvim with kickstart config using following command:
 - [x] set up version control on work laptop
 - [ ] replace/configure tms better
 - [ ] Merge kickstart with current 
-  - [ ] Split plugins into parts
+  - [x] Split plugins into parts
+  - [ ] Integrate own plugins
+  - [ ] Integrate custom mappings and settings
+  - [ ] Test out go debugger in kickstarter
 - [ ] Smooth notes system
 - [ ] Set up incremental selection
 
