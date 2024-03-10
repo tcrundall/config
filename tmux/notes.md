@@ -8,6 +8,8 @@
   - [SO Post](https://superuser.com/questions/539595/tmux-configuration-conditional-to-os)
 - [ ] Set pane jumping keys for other modes
   - One already exists for copy mode. Do similar for other tmux mode
+- [ ] Send panes to full width/height
+    
 
 ## Fresh commands
 
@@ -23,6 +25,9 @@ Note: prefix is implicit
 ## Issues
 
 - Cannot choose preset arrangment with M-1, M-2, .. M-5
+
+- Not reloading bindings immediately...?
+  - Was an error in file but not shown because of custom message overwriting immediately
 
 ## Tidbits
 
