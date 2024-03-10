@@ -3,7 +3,12 @@ return {
   "tpope/vim-abolish",
   "tpope/vim-commentary",
   -- "nvim-lua/plenary.nvim",
-  "rose-pine/neovim",
+  {
+    "rose-pine/neovim",
+    config = function()
+      print("Setup rose-pine")
+    end,
+  },
   { "nvim-lualine/lualine.nvim", opts = {}, },
   { "lewis6991/gitsigns.nvim",   opts = {}, },
   {
