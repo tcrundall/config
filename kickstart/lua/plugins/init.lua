@@ -10,7 +10,9 @@
 return {
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically TODO: Understand what this does
   'christoomey/vim-tmux-navigator', -- switch between tmux and nvim panes
-  'ixru/nvim-markdown', -- pretty markdown with link concealment
+
+  -- Unfortunately isn't great at syntax highlighting... maybe I can turn it off somehow?
+  -- 'ixru/nvim-markdown', -- pretty markdown with link concealment
 
   -- Help to debug highlight groups?
   -- {
