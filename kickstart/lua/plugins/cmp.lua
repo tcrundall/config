@@ -9,7 +9,9 @@ return { -- Autocompletion
         return 'make install_jsregexp'
       end)(),
     },
-    'saadparwaiz1/cmp_luasnip',
+    {
+      'saadparwaiz1/cmp_luasnip',
+    },
 
     -- Adds other completion capabilities.
     --  nvim-cmp does not ship with all sources by default. They are split
@@ -23,11 +25,21 @@ return { -- Autocompletion
     --    set up the ones that are useful for you.
     -- 'rafamadriz/friendly-snippets',
   },
+
   config = function()
     -- See `:help cmp`
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
-    luasnip.config.setup {}
+
+    luasnip.config.setup {
+      -- jump between all insertion points {{
+      keep_roots = true,
+      link_roots = true,
+      link_children = true,
+      -- }}
+      updateevents = 'InsertLeave,TextChanged,TextChangedI', -- update changes as you type
+      -- enable_autosnippets = true, -- honestly, I don't really know
+    }
 
     cmp.setup {
       snippet = {

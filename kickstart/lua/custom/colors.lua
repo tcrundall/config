@@ -72,8 +72,6 @@ end
 
 -- [TH]eme [D]ark
 vim.keymap.set('n', '<leader>thd', DarkTheme)
-vim.keymap.set('n', '<leader>a', DarkTheme)
-vim.keymap.set('n', '<leader>f', DarkThemeOpaque)
 
 -- [TH]eme [L]ight
 vim.keymap.set('n', '<leader>thl', LightTheme)

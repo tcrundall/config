@@ -31,6 +31,12 @@ vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 -- vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 -- vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+vim.keymap.set('n', '<leader>x', ':q<CR>', { desc = 'E[X]it current pane' })
+vim.keymap.set('n', '<leader>l', '<C-W>10>')
+vim.keymap.set('n', '<leader>h', '<C-W>10<')
+vim.keymap.set('n', '<leader>j', '<C-W>5+')
+vim.keymap.set('n', '<leader>k', '<C-W>5-')
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 

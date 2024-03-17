@@ -10,7 +10,7 @@
 return {
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically TODO: Understand what this does
   'christoomey/vim-tmux-navigator', -- switch between tmux and nvim panes
-  'rose-pine/neovim',
+  'ixru/nvim-markdown', -- pretty markdown with link concealment
 
   -- Help to debug highlight groups?
   -- {
@@ -22,7 +22,16 @@ return {
 
   { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} }, -- Add indentation guides even on blank lines
   { 'numToStr/Comment.nvim', opts = {} }, -- "gc" to comment visual regions/lines
+  {
+    'theprimeagen/harpoon',
+    config = function()
+      local mark = require 'harpoon.mark'
+      local ui = require 'harpoon.ui'
 
+      vim.keymap.set('n', '<leader>a', mark.add_file, { desc = '[A]dd file to harpoon list' })
+      vim.keymap.set('n', '<leader><tab>', ui.toggle_quick_menu, { desc = 'Open harpoon list' })
+    end,
+  },
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
   { -- Autoformat
