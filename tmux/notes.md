@@ -11,6 +11,8 @@
 - [x] Send panes to full width/height
 - [x] Command for copying current command in shell
 - [ ] Smarter moving of pane to far side
+- [ ] Lower timeout so I can wait out accidental prefix press
+  - [ ] or, use ESC, and bind new key to enter copy mode
     
 
 ## Fresh commands

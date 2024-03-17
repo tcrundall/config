@@ -45,11 +45,33 @@ return {
       formatters_by_ft = {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
+        python = { 'black', 'isort' },
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
         -- javascript = { { "prettierd", "prettier" } },
+        cs = { 'csharpier' },
+      },
+      formatters = {
+        black = {
+          prepend_args = { '--line-length=120' },
+        },
+        -- flake is not a built in formatter. I'll need to define my own
+        -- flake8 = {
+        --   prepend_args = {
+        --     '--max-line-length=120',
+        --     '--ignore=F405,F403',
+        --   },
+        -- },
+        isort = {
+          prepend_args = {
+            '--multi-line=3',
+            '--trailing-comma',
+            '--force-grid-wrap',
+            '--use-parentheses',
+            '--line-width=120',
+          },
+        },
       },
     },
   },
