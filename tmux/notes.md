@@ -2,7 +2,7 @@
 
 ## TODOs
 
-- [ ] Set copy selection conditionally for mac/linux?
+- [x] Set copy selection conditionally for mac/linux?
   - Currently copy to clipboard doesn't work on linux.
   - I suspect it's because I'm using a mac only clipboard name
   - [SO Post](https://superuser.com/questions/539595/tmux-configuration-conditional-to-os)
