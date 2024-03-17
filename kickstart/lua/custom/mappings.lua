@@ -37,6 +37,8 @@ vim.keymap.set('n', '<leader>h', '<C-W>10<')
 vim.keymap.set('n', '<leader>j', '<C-W>5+')
 vim.keymap.set('n', '<leader>k', '<C-W>5-')
 
+vim.keymap.set('n', 'gx', [[:silent execute '!google-chrome ' . shellescape(expand('<cfile>'), 1)<CR>]], { desc = '[G]o to [X]webpage' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 

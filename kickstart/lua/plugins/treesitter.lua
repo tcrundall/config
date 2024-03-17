@@ -20,6 +20,7 @@ return { -- Highlight, edit, and navigate code
         'typescript',
         'javascript',
         'query', -- TODO: Determine what this is for
+        'helm',
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
