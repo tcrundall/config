@@ -24,7 +24,23 @@ Open nvim with kickstart config using following command:
   - [ ] Test out go debugger in kickstarter
 - [ ] Smooth notes system
 - [ ] Set up incremental selection
+- [ ] Fancier C# setup
+  - [ ] code action mapping
+- [ ] advanced grep with filename filtering
+- [ ] treesitter highlighting for gotmpl
+- [ ] breadcrumbs
+- [ ] git signs
+- [ ] azure link
+- [ ] fix folding
+  - [ ] no folds in finder
+  - [ ] doesn't reset on file reentry
+- [ ] fix nvim tree default width
+- [ ] Fancy nested notes system
+      
 
 ## TODO
-- read through lsp-zero.txt
+- [ ] read through lsp-zero.txt
+- [ ] practice quickfix list
+- [ ] practice merge conflict resolution
+  - [ ] lazygit?
 
