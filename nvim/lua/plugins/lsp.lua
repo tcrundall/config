@@ -213,6 +213,38 @@ return { -- LSP Configuration & Plugins
         },
       },
 
+      azure_pipelines_ls = {
+        root_dir = require('lspconfig.util').find_git_ancestor,
+        settings = {
+          yaml = {
+            schemas = {
+              ['https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json'] = {
+                '/azure-pipeline*.y*l',
+                '/*.azure*',
+                'Azure-Pipelines/**/*.y*l',
+                'Pipelines/*.y*l',
+                'templates/*.y*l',
+                '**/*.y*l',
+                '*.yaml',
+              },
+            },
+          },
+        },
+      },
+
+      -- yamlls = {
+      --   settings = {
+      --     yaml = {
+      --       schemas = {
+      --         ['https://json.schemastore.org/github-workflow.json'] = '/.github/workflows/*',
+      --         ['../path/relative/to/file.yml'] = '/.github/workflows/*',
+      --         -- ['/templates'] = '/.github/workflows/*',
+      --         ['/templates'] = '**/*.yaml',
+      --       },
+      --     },
+      --   },
+      -- },
+
       lua_ls = {
         -- cmd = {...},
         -- filetypes { ...},
