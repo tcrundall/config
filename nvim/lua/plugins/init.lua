@@ -24,9 +24,16 @@ return {
 
   { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} }, -- Add indentation guides even on blank lines
   { 'numToStr/Comment.nvim', opts = {} }, -- "gc" to comment visual regions/lines
-  {
+
+  -- Highlight todo, notes, etc in comments
+  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+
+  { -- Quckly jump between a subset of files
     'theprimeagen/harpoon',
     config = function()
+      require('harpoon').setup {
+        menu = { width = 90 },
+      }
       local mark = require 'harpoon.mark'
       local ui = require 'harpoon.ui'
 
@@ -34,8 +41,7 @@ return {
       vim.keymap.set('n', '<leader><tab>', ui.toggle_quick_menu, { desc = 'Open harpoon list' })
     end,
   },
-  -- Highlight todo, notes, etc in comments
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+
   { -- Autoformat
     'stevearc/conform.nvim',
     opts = {

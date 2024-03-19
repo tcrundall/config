@@ -39,6 +39,14 @@ vim.keymap.set('n', '<leader>k', '<C-W>5-')
 
 vim.keymap.set('n', 'gx', [[:silent execute '!google-chrome ' . shellescape(expand('<cfile>'), 1)<CR>]], { desc = '[G]o to [X]webpage' })
 
+-- Shift highlighed lines up and down
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+
+-- Don't overwrite yank buffer on paste
+--   deletes highlight, sending to blackhole register, then puts
+vim.keymap.set('x', 'p', [["_dP]])
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
