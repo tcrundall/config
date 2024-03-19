@@ -24,6 +24,8 @@ Open nvim with kickstart config using following command:
   - [x] code action mapping
   - [ ] https://github.com/dense-analysis/ale
   - [ ] Keep eye on [issue for not decompiling type defs](https://github.com/Hoffs/omnisharp-extended-lsp.nvim/issues/26)
+    - decompiling yields different "file name" for go-to-definition and go-to-type-definition. Related?
+  - [ ] Set "log level" in omnisharp to Information to show logs maybe?
 - [ ] advanced grep with filename filtering
 - [ ] treesitter highlighting for gotmpl
 - [ ] breadcrumbs
@@ -32,11 +34,11 @@ Open nvim with kickstart config using following command:
 - [ ] fix folding
   - [ ] no folds in finder
   - [ ] doesn't reset on file reentry
-- [ ] fix nvim tree default width
+- [x] fix nvim tree default width
 - [ ] Fancy nested notes system
-- [ ] Open links in browser
-- [ ] Don't replace yanked group when pasting
-  - [ ] Steal from Primeagen's nvim config
+- [x] Open links in browser
+- [x] Don't replace yanked group when pasting
+  - [x] Steal from Primeagen's nvim config
 - [ ] Write plugin for mapstack as exercise
 
 
