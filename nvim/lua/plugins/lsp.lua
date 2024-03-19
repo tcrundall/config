@@ -105,27 +105,32 @@ return { -- LSP Configuration & Plugins
         --  For example, in C this would take you to the header
         map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
-        -- The following two autocommands are used to highlight references of the
-        -- word under your cursor when your cursor rests there for a little while.
-        --    See `:help CursorHold` for information about when this is executed
-        --
-        -- When you move your cursor, the highlights will be cleared (the second autocommand).
-        if client and client.server_capabilities.documentHighlightProvider then
-          vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-            buffer = event.buf,
-            callback = vim.lsp.buf.document_highlight,
-          })
-
-          vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-            buffer = event.buf,
-            callback = vim.lsp.buf.clear_references,
-          })
-        end
-
         if client.name == 'omnisharp' then
+          -- Define custom omnisharp extension mappings
           map('gd', require('omnisharp_extended').lsp_definition, 'Ext. [G]oto [D]efinition')
           map('gr', require('omnisharp_extended').lsp_references, 'Ext. [G]oto [R]eferences')
           map('gI', require('omnisharp_extended').lsp_implementation, 'Ext. [G]oto [I]mplementation')
+        end
+
+        -- Omnisharp doesn't always handle decompiled files well, so we don't allow it here
+        local decompiled_root = '/$metadata$/'
+        if string.find(event.file, decompiled_root) == nil then
+          -- The following two autocommands are used to highlight references of the
+          -- word under your cursor when your cursor rests there for a little while.
+          --    See `:help CursorHold` for information about when this is executed
+          --
+          -- When you move your cursor, the highlights will be cleared (the second autocommand).
+          if client and client.server_capabilities.documentHighlightProvider then
+            vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+              buffer = event.buf,
+              callback = vim.lsp.buf.document_highlight,
+            })
+
+            vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+              buffer = event.buf,
+              callback = vim.lsp.buf.clear_references,
+            })
+          end
         end
       end,
     })
