@@ -1,3 +1,5 @@
+local initialized = {}
+
 return { -- LSP Configuration & Plugins
   'neovim/nvim-lspconfig',
   dependencies = {
@@ -44,12 +46,20 @@ return { -- LSP Configuration & Plugins
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
       callback = function(event)
+        -- Print message upon first time through
+        local client = vim.lsp.get_client_by_id(event.data.client_id)
+        if initialized[client.name] ~= true then
+          print('Client ' .. client.name .. ' initialized = ' .. tostring(client.initialized))
+          initialized[client.name] = true
+        end
+
         -- NOTE: Remember that lua is a real programming language, and as such it is possible
         -- to define small helper and utility functions so you don't have to repeat yourself
         -- many times.
         --
         -- In this case, we create a function that lets us more easily define mappings specific
         -- for LSP related items. It sets the mode, buffer and description for us each time.
+
         local map = function(keys, func, desc)
           vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
@@ -100,7 +110,6 @@ return { -- LSP Configuration & Plugins
         --    See `:help CursorHold` for information about when this is executed
         --
         -- When you move your cursor, the highlights will be cleared (the second autocommand).
-        local client = vim.lsp.get_client_by_id(event.data.client_id)
         if client and client.server_capabilities.documentHighlightProvider then
           vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
             buffer = event.buf,
@@ -113,7 +122,7 @@ return { -- LSP Configuration & Plugins
           })
         end
 
-        if event.file:sub(-3) == '.cs' then
+        if client.name == 'omnisharp' then
           map('gd', require('omnisharp_extended').lsp_definition, 'Ext. [G]oto [D]efinition')
           map('gr', require('omnisharp_extended').lsp_references, 'Ext. [G]oto [R]eferences')
           map('gI', require('omnisharp_extended').lsp_implementation, 'Ext. [G]oto [I]mplementation')
