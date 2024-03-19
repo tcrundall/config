@@ -15,17 +15,19 @@ Open nvim with kickstart config using following command:
 - [ ] Merge kickstart with current 
   - [x] Split plugins into parts
   - [x] Integrate own plugins
-  - [ ] Integrate custom mappings and settings
-  - [ ] Set up lsps
+  - [x] Integrate custom mappings and settings
+  - [x] Set up lsps
   - [ ] Test out go debugger in kickstarter
 - [ ] Smooth notes system
 - [ ] Set up incremental selection
-- [ ] Fancier C# setup
-  - [ ] code action mapping
+- [x] Fancier C# setup
+  - [x] code action mapping
+  - [ ] https://github.com/dense-analysis/ale
+  - [ ] Keep eye on [issue for not decompiling type defs](https://github.com/Hoffs/omnisharp-extended-lsp.nvim/issues/26)
 - [ ] advanced grep with filename filtering
 - [ ] treesitter highlighting for gotmpl
 - [ ] breadcrumbs
-- [ ] git signs
+- [x] git signs
 - [ ] azure link
 - [ ] fix folding
   - [ ] no folds in finder
@@ -35,7 +37,8 @@ Open nvim with kickstart config using following command:
 - [ ] Open links in browser
 - [ ] Don't replace yanked group when pasting
   - [ ] Steal from Primeagen's nvim config
-      
+- [ ] Write plugin for mapstack as exercise
+
 
 ## TODO
 - [ ] read through lsp-zero.txt
