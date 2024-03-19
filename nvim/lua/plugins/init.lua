@@ -28,6 +28,11 @@ return {
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
+  { -- Sophisticated undo history
+    'mbbill/undotree',
+    keys = { { '<leader>u', ':UndotreeToggle<cr>' } },
+  },
+
   { -- Breadcrumb (show containing function/class)
     'LunarVim/breadcrumbs.nvim',
     dependencies = {
