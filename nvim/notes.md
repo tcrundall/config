@@ -22,13 +22,15 @@ Open nvim with kickstart config using following command:
 - [ ] Set up incremental selection
 - [x] Fancier C# setup
   - [x] code action mapping
-  - [ ] https://github.com/dense-analysis/ale
+  - [x] https://github.com/dense-analysis/ale
+    - Don't need ale
   - [ ] Keep eye on [issue for not decompiling type defs](https://github.com/Hoffs/omnisharp-extended-lsp.nvim/issues/26)
     - decompiling yields different "file name" for go-to-definition and go-to-type-definition. Related?
   - [ ] Set "log level" in omnisharp to Information to show logs maybe?
 - [ ] advanced grep with filename filtering
 - [ ] treesitter highlighting for gotmpl
 - [ ] breadcrumbs
+  - https://github.com/LunarVim/breadcrumbs.nvim
 - [x] git signs
 - [ ] azure link
 - [ ] fix folding

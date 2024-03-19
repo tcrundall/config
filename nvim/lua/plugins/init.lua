@@ -28,6 +28,23 @@ return {
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
+  { -- Breadcrumb (show containing function/class)
+    'LunarVim/breadcrumbs.nvim',
+    dependencies = {
+      { 'SmiteshP/nvim-navic' },
+    },
+    opts = {},
+    config = function()
+      require('nvim-navic').setup {
+        lsp = {
+          auto_attach = true,
+        },
+      }
+
+      require('breadcrumbs').setup()
+    end,
+  },
+
   { -- Quckly jump between a subset of files
     'theprimeagen/harpoon',
     config = function()

@@ -171,6 +171,8 @@ return { -- LSP Configuration & Plugins
       --   },
       -- },
 
+      -- See https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/omnisharp.lua
+      -- for available options
       omnisharp = {
         settings = {
           cmd = { 'OmniSharp' },
