@@ -57,6 +57,9 @@ vim.keymap.set("n", "<leader>co", ":cprev<cr>", { desc = "[C]see [O]pen quickfix
 vim.keymap.set("n", "<leader>cn", ":cnext<cr>", { desc = "[C]see [N]ext" })
 vim.keymap.set("n", "<leader>cp", ":cprev<cr>", { desc = "[C]see [P]revious" })
 
+-- Dev helpers
+vim.keymap.set("n", "<leader><leader>x", "<cmd>w<cr><cmd>source %<cr>", { desc = "e[X]ecute current lua file" })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 

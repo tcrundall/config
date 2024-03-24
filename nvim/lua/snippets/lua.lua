@@ -33,19 +33,20 @@ ls.add_snippets("lua", {
   s("example", {
     t("print('example lua snippet')"),
   }),
+
   s({
     trig = "map",
     name = "vim mapping",
     desc = "Define a mapping for a given mode complete with description",
   }, {
-    t("vim.keymap.set('"),
+    t('vim.keymap.set("'),
     i(1, "mode"),
-    t("', '"),
+    t('", "'),
     i(2, "mapping"),
-    t("', '"),
+    t('", '),
     i(3, "command"),
-    t("', { desc = '"),
+    t(', { desc = "'),
     i(4, "description"),
-    t("' })"),
+    t('" })'),
   }),
 })
