@@ -1,7 +1,7 @@
 -- Example snipets file for lua
 -- See :help luasnip.txt
 
-local ls = require 'luasnip'
+local ls = require("luasnip")
 local s = ls.snippet
 -- local sn = ls.snippet_node
 -- local isn = ls.indent_snippet_node
@@ -29,23 +29,23 @@ local i = ls.insert_node
 -- local ms = ls.multi_snippet
 -- local k = require('luasnip.nodes.key_indexer').new_key
 
-ls.add_snippets('lua', {
-  s('example', {
-    t "print('example lua snippet')",
+ls.add_snippets("lua", {
+  s("example", {
+    t("print('example lua snippet')"),
   }),
   s({
-    trig = 'map',
-    name = 'vim mapping',
-    desc = 'Define a mapping for a given mode complete with description',
+    trig = "map",
+    name = "vim mapping",
+    desc = "Define a mapping for a given mode complete with description",
   }, {
-    t "vim.keymap.set('",
-    i(1, 'mode'),
-    t "', '",
-    i(2, 'mapping'),
-    t "', '",
-    i(3, 'command'),
-    t "', { desc = '",
-    i(4, 'description'),
-    t "' })",
+    t("vim.keymap.set('"),
+    i(1, "mode"),
+    t("', '"),
+    i(2, "mapping"),
+    t("', '"),
+    i(3, "command"),
+    t("', { desc = '"),
+    i(4, "description"),
+    t("' })"),
   }),
 })

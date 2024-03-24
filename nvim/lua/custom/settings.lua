@@ -1,6 +1,8 @@
--- set shell to bash
--- avoids super laggy tmux switch
-vim.o.shell = '/bin/bash'
+-- set shell to bash, in interactive mode (for access to aliases)
+-- avoids super laggy tmux switch when using fish
+-- vim.o.shell = '/bin/bash --rcfile ' .. vim.fn.expand '~' .. '/.bash_aliases'
+vim.o.shell = "/bin/bash --login"
+-- vim.o.shell = '/bin/bash -i'
 
 vim.g.have_nerd_font = true
 
@@ -12,7 +14,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 
 -- Don't show the mode, since it's already in status line
 vim.opt.showmode = true
@@ -20,7 +22,7 @@ vim.opt.showmode = true
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.opt.clipboard = 'unnamedplus'
+vim.opt.clipboard = "unnamedplus"
 
 -- Enable break indent
 vim.opt.breakindent = false
@@ -33,7 +35,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Keep signcolumn on by default
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = "yes"
 
 -- Decrease update time
 vim.opt.updatetime = 250
@@ -47,10 +49,10 @@ vim.opt.splitbelow = true
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- Preview substitutions live, as you type!
-vim.opt.inccommand = 'split'
+vim.opt.inccommand = "split"
 
 -- Show which line your cursor is on
 vim.opt.cursorline = true

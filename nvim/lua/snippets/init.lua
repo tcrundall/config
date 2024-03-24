@@ -1,1 +1,1 @@
-require 'snippets.lua'
+require("snippets.lua")
