@@ -75,5 +75,3 @@ vim.keymap.set("n", "<leader>thd", DarkTheme)
 
 -- [TH]eme [L]ight
 vim.keymap.set("n", "<leader>thl", LightTheme)
-
-DarkTheme()

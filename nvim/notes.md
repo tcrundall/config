@@ -15,7 +15,7 @@ Open nvim with kickstart config using following command:
   - Got one set up
   - Provides accurate highlighting and task completion
   - nothing clever about variables though, nor templates
-- [ ] replace/configure tms better
+- [ ] replace/configure tms better (on mac)
 - [ ] Merge kickstart with current 
   - [x] Split plugins into parts
   - [x] Integrate own plugins
@@ -33,7 +33,7 @@ Open nvim with kickstart config using following command:
   - [ ] Set "log level" in omnisharp to Information to show logs maybe?
 - [ ] advanced grep with filename filtering
 - [ ] treesitter highlighting for gotmpl
-- [ ] breadcrumbs
+- [x] breadcrumbs
   - https://github.com/LunarVim/breadcrumbs.nvim
 - [x] git signs
 - [ ] azure link
@@ -45,12 +45,12 @@ Open nvim with kickstart config using following command:
 - [x] Open links in browser
 - [x] Don't replace yanked group when pasting
   - [x] Steal from Primeagen's nvim config
-- [ ] Write plugin for mapstack as exercise
+- [x] Write plugin for mapstack as exercise
 
 
 ## TODO
 - [ ] read through lsp-zero.txt
-- [ ] practice quickfix list
+- [x] practice quickfix list
 - [ ] practice merge conflict resolution
   - [ ] lazygit?
 
@@ -61,3 +61,4 @@ Open nvim with kickstart config using following command:
   - [x] not imlemented for cs language server....
   - [x] use omnisharp, setup like they suggest
 - [x] set up version control on work laptop
+

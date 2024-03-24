@@ -8,8 +8,16 @@
 --  This is equivalent to:
 --    require('Comment').setup({})
 return {
+  -- { dir = "~/Coding/nvim/stackmap.nvim/", opts = { key = "value" } },
   "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically TODO: Understand what this does
   "christoomey/vim-tmux-navigator", -- switch between tmux and nvim panes
+  {
+    "nvim-lua/plenary.nvim",
+    config = function()
+      -- vim.keymap.set("n", "<leader>rt", "<Plug>PlenaryTestFile", { desc = "[R]un [T]est of file" })
+      vim.keymap.set("n", "<leader>rt", ":PlenaryBustedFile", { desc = "[R]un [T]est of file" })
+    end,
+  },
 
   -- Unfortunately isn't great at syntax highlighting... maybe I can turn it off somehow?
   -- 'ixru/nvim-markdown', -- pretty markdown with link concealment
@@ -128,6 +136,4 @@ return {
       -- vim.cmd.hi 'Comment gui=none'
     end,
   },
-
-  require("kickstart.plugins.debug"),
 }
