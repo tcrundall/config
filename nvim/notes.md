@@ -10,7 +10,11 @@ Open nvim with kickstart config using following command:
 ## Wishlist
 
 - [ ] less aggressive link hiding in markdown files
-- [ ] azure pipelines LSP
+- [x] azure pipelines LSP
+  - https://www.schemastore.org/json/
+  - Got one set up
+  - Provides accurate highlighting and task completion
+  - nothing clever about variables though, nor templates
 - [ ] replace/configure tms better
 - [ ] Merge kickstart with current 
   - [x] Split plugins into parts

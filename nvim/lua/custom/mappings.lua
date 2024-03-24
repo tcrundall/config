@@ -47,6 +47,11 @@ vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 --   deletes highlight, sending to blackhole register, then puts
 vim.keymap.set('x', 'p', [["_dP]])
 
+-- Quick fix list
+vim.keymap.set('n', '<leader>co', ':cprev<cr>', { desc = '[C]see [O]pen quickfix list' })
+vim.keymap.set('n', '<leader>cn', ':cnext<cr>', { desc = '[C]see [N]ext' })
+vim.keymap.set('n', '<leader>cp', ':cprev<cr>', { desc = '[C]see [P]revious' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
