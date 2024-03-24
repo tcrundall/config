@@ -30,7 +30,6 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
     end, { desc = "[G]it [U]ndo last add of hunk to stage" })
 
     vim.keymap.set("n", "gX", function()
-      print("Trying to reset hunk")
       gitsigns.reset_hunk()
     end, { desc = "[G]it [X]reset current hunk" })
 
