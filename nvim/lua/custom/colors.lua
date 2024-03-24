@@ -30,50 +30,50 @@ function SetBackground()
     -- 'NormalSB', -- Side Bars, e.g. help in TokyoNight
 
     -- 'Inactive',
-    'SignColumnSB',
-    'MsgArea',
+    "SignColumnSB",
+    "MsgArea",
     -- 'WinBar',
-    'WinSeparator',
+    "WinSeparator",
     -- 'All',
 
     -- Telescope
-    'TelescopeNormal',
-    'TelescopeBorder',
+    "TelescopeNormal",
+    "TelescopeBorder",
 
     -- which key
     -- 'WhichKeyFloat',
 
     -- nvim tree
-    'NvimTreeNormal',
-    'NvimTreeNormalNC',
-    'NvimTreeStatusLine',
-    'NvimTreeStatusLineNC',
+    "NvimTreeNormal",
+    "NvimTreeNormalNC",
+    "NvimTreeStatusLine",
+    "NvimTreeStatusLineNC",
     -- 'NvimTreeWinSeparator',
   }
   for _, hl in pairs(highlight_groups) do
     -- vim.api.nvim_set_hl(0, hl, { bg = 'none', fg = 'none' })
-    vim.api.nvim_set_hl(0, hl, { bg = 'none' })
+    vim.api.nvim_set_hl(0, hl, { bg = "none" })
   end
 end
 
 function DarkTheme()
-  vim.cmd.colorscheme 'tokyonight-night'
+  vim.cmd.colorscheme("tokyonight-night")
   -- vim.cmd.colorscheme 'rose-pine-main'
   SetBackground()
 end
 function DarkThemeOpaque()
   -- vim.cmd.colorscheme 'tokyonight-night'
-  vim.cmd.colorscheme 'rose-pine-main'
+  vim.cmd.colorscheme("rose-pine-main")
 end
 
 function LightTheme()
-  vim.cmd 'colorscheme tokyonight-day'
+  vim.cmd("colorscheme tokyonight-day")
 end
 
 -- [TH]eme [D]ark
-vim.keymap.set('n', '<leader>thd', DarkTheme)
+vim.keymap.set("n", "<leader>thd", DarkTheme)
 
 -- [TH]eme [L]ight
-vim.keymap.set('n', '<leader>thl', LightTheme)
+vim.keymap.set("n", "<leader>thl", LightTheme)
 
 DarkTheme()
