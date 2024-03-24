@@ -17,7 +17,7 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
         -- virt_text_pos = 'eol',
       },
     }
-    print 'configuring gitsigns'
+
     local gitsigns = require 'gitsigns'
     gitsigns.setup(opts)
 
