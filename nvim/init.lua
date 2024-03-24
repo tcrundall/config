@@ -1,3 +1,7 @@
+-- Ensure globals are available for everywhere
+-- especially any plugins I'm currently developing
+require("custom.globals")
+
 -- Ensure we at least have settings, in the event lazy fails
 require("custom.settings")
 
