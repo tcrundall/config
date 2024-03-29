@@ -29,14 +29,21 @@ return { -- Highlight, edit, and navigate code
         additional_vim_regex_highlighting = true,
       },
       indent = { enable = true },
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = "<m-v>",
+          node_incremental = "<m-n>",
+          scope_incremental = "<m-s>",
+          node_decremental = "<m-m>",
+        },
+      },
     })
 
     -- There are additional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:
     --
-    --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-    -- TODO: Set up incremental section
   end,
 }
