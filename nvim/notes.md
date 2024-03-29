@@ -1,16 +1,16 @@
 # Notes
 
-## Tips
+## Target
 
 ## Wishlist
 
-- [ ] replace/configure tms better (on mac)
+- [x] replace/configure tms better (on mac)
+- [x] advanced grep with filename filtering
 - [ ] Merge kickstart with current 
   - [ ] Test out go debugger in kickstarter
 - [ ] Smooth notes system
 - [x] Set up incremental selection
-  - [ ] Set "log level" in omnisharp to Information to show logs maybe?
-- [ ] advanced grep with filename filtering
+- [ ] Set "log level" in omnisharp to Information to show logs maybe?
 - [ ] treesitter highlighting for gotmpl
   - https://github.com/LunarVim/breadcrumbs.nvim
 - [ ] azure link
