@@ -105,7 +105,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
     -- Filter live grep for provided filetype
     vim.keymap.set("n", "<leader>sp", function()
       local file_pattern = vim.fn.input("File pattern: ")
-      local test
       if file_pattern ~= "" then
         builtin.live_grep({ glob_pattern = file_pattern })
       end
