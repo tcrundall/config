@@ -30,6 +30,12 @@
 - C# LSP
   - Keep eye on [issue for not decompiling type defs](https://github.com/Hoffs/omnisharp-extended-lsp.nvim/issues/26)
     - decompiling yields different "file name" for go-to-definition and go-to-type-definition. Related?
+- Transparent background?
+  ```lua
+      return {
+          "xiyaowong/transparent.nvim"
+      }
+  ```
 
 
 ## Process
