@@ -11,6 +11,14 @@ return {
       renderer = {
         group_empty = true, -- group empty directories into one line
       },
+      -- -- How to handle cwd of nvim session and tree
+      -- sync_root_with_cwd = true,
+      -- actions = {
+      --   change_dir = {
+      --     global = true,
+      --     restrict_above_cwd = true,
+      --   },
+      -- },
     })
     local api = require("nvim-tree.api")
 
