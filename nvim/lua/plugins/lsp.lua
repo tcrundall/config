@@ -7,7 +7,6 @@ return { -- LSP Configuration & Plugins
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
-    -- "Hoffs/omnisharp-extended-lsp.nvim",
     "tcrundall/omnisharp-extended-lsp.nvim",
 
     -- Useful status updates for LSP.
