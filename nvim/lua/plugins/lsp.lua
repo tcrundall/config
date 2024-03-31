@@ -7,7 +7,10 @@ return { -- LSP Configuration & Plugins
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
-    "tcrundall/omnisharp-extended-lsp.nvim",
+    "Hoffs/omnisharp-extended-lsp.nvim",
+    -- {
+    --   dir = "~/Coding/nvim/omnisharp-extended-lsp.nvim/",
+    -- },
 
     -- Useful status updates for LSP.
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -61,8 +64,6 @@ return { -- LSP Configuration & Plugins
           map("gd", require("omnisharp_extended").lsp_definition, "Ext. [G]oto [D]efinition")
           map("gr", require("omnisharp_extended").lsp_references, "Ext. [G]oto [R]eferences")
           map("gI", require("omnisharp_extended").lsp_implementation, "Ext. [G]oto [I]mplementation")
-
-          -- This is my own function from my fork of omnisharp_extended
           map("<leader>D", require("omnisharp_extended").lsp_type_definition, "Ext. [G]oto [D]efinition")
         end
 
@@ -144,7 +145,7 @@ return { -- LSP Configuration & Plugins
           enable_ms_build_load_projects_on_demand = false,
 
           -- Enables support for roslyn analyzers, code fixes and rulesets.
-          enable_roslyn_analyzers = false,
+          enable_roslyn_analyzers = true,
 
           -- Specifies whether 'using' directives should be grouped and sorted during
           -- document formatting.
@@ -164,7 +165,7 @@ return { -- LSP Configuration & Plugins
 
           -- Only run analyzers against open files when 'enableRoslynAnalyzers' is
           -- true
-          analyze_open_documents_only = false,
+          analyze_open_documents_only = true,
         },
       },
 
@@ -212,12 +213,12 @@ return { -- LSP Configuration & Plugins
               checkThirdParty = false,
               -- Tells lua_ls where to find all the Lua files that you have loaded
               -- for your neovim configuration.
-              library = {
-                "${3rd}/luv/library",
-                unpack(vim.api.nvim_get_runtime_file("", true)),
-              },
+              -- library = {
+              --   "${3rd}/luv/library",
+              --   unpack(vim.api.nvim_get_runtime_file("", true)),
+              -- },
               -- If lua_ls is really slow on your computer, you can try this instead:
-              -- library = { vim.env.VIMRUNTIME },
+              library = { vim.env.VIMRUNTIME },
             },
             completion = {
               callSnippet = "Replace",

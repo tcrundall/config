@@ -64,16 +64,44 @@ return {
   },
 
   { -- Quckly jump between a subset of files
-    "theprimeagen/harpoon",
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    -- branch = "not-a-barnch",
+    dependences = { "nvim-lua/plenary.nvim" },
     config = function()
-      require("harpoon").setup({
-        menu = { width = 90 },
-      })
-      local mark = require("harpoon.mark")
-      local ui = require("harpoon.ui")
+      local harpoon = require("harpoon")
 
-      vim.keymap.set("n", "<leader>a", mark.add_file, { desc = "[A]dd file to harpoon list" })
-      vim.keymap.set("n", "<leader><tab>", ui.toggle_quick_menu, { desc = "Open harpoon list" })
+      harpoon:setup({ settings = {
+        save_on_toggle = true,
+        save_on_ui_close = true,
+      } })
+      vim.keymap.set("n", "<leader>a", function()
+        harpoon:list():append()
+      end)
+      vim.keymap.set("n", "<leader><tab>", function()
+        harpoon.ui:toggle_quick_menu(harpoon:list())
+      end)
+
+      vim.keymap.set("n", "<M-j>", function()
+        harpoon:list():select(1)
+      end)
+      vim.keymap.set("n", "<M-k>", function()
+        harpoon:list():select(2)
+      end)
+      vim.keymap.set("n", "<M-l>", function()
+        harpoon:list():select(3)
+      end)
+      vim.keymap.set("n", "<M-;>", function()
+        harpoon:list():select(4)
+      end)
+
+      -- Toggle previous & next buffers stored within Harpoon list
+      vim.keymap.set("n", "<M-S-P>", function()
+        harpoon:list():prev()
+      end)
+      vim.keymap.set("n", "<M-S-N>", function()
+        harpoon:list():next()
+      end)
     end,
   },
 
@@ -93,7 +121,7 @@ return {
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
         -- javascript = { { "prettierd", "prettier" } },
-        cs = { "csharpier" },
+        -- cs = { "csharpier" },
       },
       formatters = {
         black = {
