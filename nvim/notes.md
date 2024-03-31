@@ -2,22 +2,35 @@
 
 ## Target
 
+- [ ] Omnisharp lsp - iron out
+  - [ ] Set "log level" in omnisharp to Information to show logs maybe?
+  - [ ] Set up commands for reattaching to current buffer
+  - [ ] Enable package restore?
+- [ ] azure link
+
 ## Wishlist
 
 - [ ] Merge kickstart with current 
   - [ ] Test out go debugger in kickstarter
 - [ ] Smooth notes system
-- [ ] Omnisharp lsp - iron out
-  - [ ] Set "log level" in omnisharp to Information to show logs maybe?
-  - [ ] Set up commands for reattaching to current buffer
 - [ ] treesitter highlighting for gotmpl
   - https://github.com/LunarVim/breadcrumbs.nvim
-- [ ] azure link
 - [ ] fix folding
   - [ ] no folds in finder
   - [ ] doesn't reset on file reentry
 - [ ] commentary
   - don't auto inject comments below or above?
+- [x] Harpoon
+  - [x] hotkeys
+  - [x] Update to v2
+- [ ] Fix testing
+  - [x] Get it working
+    - Configure nvim with -u /path/to/init.lua
+    - Configure test with, e.g.:
+    ```bash
+      -c "PlenaryBustedDirectory /path/to/tests/ {minimal_init = '/path/to/init.lua'}"
+    ```
+  - [ ] Set up keymaps and central minimal init
 
 ## TODO
 - [ ] practice merge conflict resolution
