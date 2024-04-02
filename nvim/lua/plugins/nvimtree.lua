@@ -2,6 +2,7 @@ return {
   "nvim-tree/nvim-tree.lua",
   dependencies = {
     "nvim-tree/nvim-web-devicons", -- optional
+    "nvim-telescope/telescope.nvim",
   },
   config = function()
     require("nvim-tree").setup({

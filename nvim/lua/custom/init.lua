@@ -1,5 +1,6 @@
-require("custom.settings")
-require("custom.mappings")
 require("custom.colors")
 require("custom.globals")
+require("custom.mappings")
 require("custom.notes")
+require("custom.settings")
+require("custom.user-functions")
