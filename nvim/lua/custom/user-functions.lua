@@ -37,20 +37,17 @@ local adoLink = function(opts)
   end
 
   local filename = vim.fn.expand("%:p:.")
-  local url = base_url
-    .. repo_name
-    .. "?path=/"
-    .. filename
-    .. "&version="
-    .. target
-    .. "&line="
-    .. opts.line1
-    .. "&lineEnd="
-    .. opts.line2
-    .. "&lineStartColumn=0&lineEndColumn=1000"
+  local url = string.format(
+    "%s%s?path=/%s&version=%s&line=%d&lineEnd=%d&lineStartColumn=0&lineEndColumn=1000",
+    base_url,
+    repo_name,
+    filename,
+    target,
+    opts.line1,
+    opts.line2
+  )
   vim.fn.setreg("*", url)
   vim.fn.setreg("+", url)
-  print(url)
   return url
 end
 
