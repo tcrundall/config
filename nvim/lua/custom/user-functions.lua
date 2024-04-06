@@ -70,3 +70,7 @@ end, { range = true, nargs = "?" })
 vim.api.nvim_create_user_command("LinkToFile", function(opts)
   fileName(opts)
 end, { range = false, nargs = 0 })
+
+vim.api.nvim_create_user_command("YamlToJson", "%!yq -o=json", {})
+
+vim.api.nvim_create_user_command("Json", "%!jq .", {})
