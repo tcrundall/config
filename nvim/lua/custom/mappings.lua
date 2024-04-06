@@ -50,7 +50,7 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Don't overwrite yank buffer on paste
 --   deletes highlight, sending to blackhole register, then puts
-vim.keymap.set("x", "p", [["_dp]])
+vim.keymap.set("x", "p", [["_dP]])
 vim.keymap.set("x", "P", [["_dP]])
 
 -- Quick fix list

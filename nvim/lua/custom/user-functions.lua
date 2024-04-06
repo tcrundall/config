@@ -51,6 +51,14 @@ local adoLink = function(opts)
   return url
 end
 
+local fileName = function(opts)
+  local filename = vim.fn.expand("%:p:.")
+  vim.fn.setreg("*", filename)
+  vim.fn.setreg("+", filename)
+  P(filename)
+  return filename
+end
+
 vim.api.nvim_create_user_command("LinkToGit", function(opts)
   githubLink(opts)
 end, { range = true, nargs = "?" })
@@ -58,3 +66,7 @@ end, { range = true, nargs = "?" })
 vim.api.nvim_create_user_command("LinkToAdo", function(opts)
   adoLink(opts)
 end, { range = true, nargs = "?" })
+
+vim.api.nvim_create_user_command("LinkToFile", function(opts)
+  fileName(opts)
+end, { range = false, nargs = 0 })

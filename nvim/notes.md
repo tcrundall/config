@@ -10,6 +10,7 @@
 
 ## Wishlist
 
+- [ ] Case sensitive substitute
 - [ ] Merge kickstart with current 
   - [ ] Test out go debugger in kickstarter
 - [ ] Smooth notes system
