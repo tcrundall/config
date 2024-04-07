@@ -4,13 +4,15 @@
 
 - [ ] Omnisharp lsp - iron out
   - [ ] Set "log level" in omnisharp to Information to show logs maybe?
-  - [ ] Set up commands for reattaching to current buffer
+  - [x] Set up commands for reattaching to current buffer
+    - this is just :e, or insert some text change and :w
   - [ ] Enable package restore?
-- [ ] azure link
+- [x] azure link
 
 ## Wishlist
 
 - [ ] Case sensitive substitute
+- [ ] Treesitter injection
 - [ ] Merge kickstart with current 
   - [ ] Test out go debugger in kickstarter
 - [ ] Smooth notes system
