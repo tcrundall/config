@@ -59,6 +59,22 @@ vim.keymap.set("n", "<leader>cn", ":cnext<cr>", { desc = "[C]see [N]ext" })
 vim.keymap.set("n", "<leader>cp", ":cprev<cr>", { desc = "[C]see [P]revious" })
 
 -- Dev helpers
+
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+  pattern = "*.lua",
+  callback = function()
+    vim.keymap.set("n", "<leader><leader>x", "<cmd>w<cr><cmd>source %<cr>", { desc = "e[X]ecute current lua file" })
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+  pattern = "*.zig",
+  callback = function()
+    vim.keymap.set("n", "<leader><leader>x", "<cmd>w<cr><cmd>!zig run %<cr>", { desc = "e[X]ecute current zig file" })
+    vim.keymap.set("n", "<leader><leader>t", "<cmd>w<cr><cmd>!zig test %<cr>", { desc = "[T]est current zig file" })
+  end,
+})
+
 vim.keymap.set("n", "<leader><leader>x", "<cmd>w<cr><cmd>source %<cr>", { desc = "e[X]ecute current lua file" })
 
 -- [[ Basic Autocommands ]]
