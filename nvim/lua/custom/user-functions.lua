@@ -23,7 +23,7 @@ local githubLink = function(opts)
   return url
 end
 
-local adoLink = function(opts)
+local getAdoLink = function(opts)
   local base_url = os.getenv("DEFAULT_REPO_URL")
   local repo_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
 
@@ -51,7 +51,7 @@ local adoLink = function(opts)
   return url
 end
 
-local fileName = function(opts)
+local getFileName = function(opts)
   local filename = vim.fn.expand("%:p:.")
   vim.fn.setreg("*", filename)
   vim.fn.setreg("+", filename)
@@ -59,17 +59,31 @@ local fileName = function(opts)
   return filename
 end
 
+local getFileNameWithAdoLink = function(opts)
+  local filename = getFileName(opts)
+  local adoLink = getAdoLink(opts)
+  local filenameWithAdoLink = string.format("[%s](%s)", filename, adoLink)
+  vim.fn.setreg("*", filenameWithAdoLink)
+  vim.fn.setreg("+", filenameWithAdoLink)
+  P(filenameWithAdoLink)
+  return filenameWithAdoLink
+end
+
 vim.api.nvim_create_user_command("LinkToGit", function(opts)
   githubLink(opts)
 end, { range = true, nargs = "?" })
 
 vim.api.nvim_create_user_command("LinkToAdo", function(opts)
-  adoLink(opts)
+  getAdoLink(opts)
 end, { range = true, nargs = "?" })
 
 vim.api.nvim_create_user_command("LinkToFile", function(opts)
-  fileName(opts)
+  getFileName(opts)
 end, { range = false, nargs = 0 })
+
+vim.api.nvim_create_user_command("LinkToFileWithAdoLink", function(opts)
+  getFileNameWithAdoLink(opts)
+end, { range = true, nargs = "?" })
 
 vim.api.nvim_create_user_command("YamlToJson", "%!yq -o=json", {})
 
