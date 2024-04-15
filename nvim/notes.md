@@ -11,6 +11,10 @@
 
 ## Wishlist
 
+- [ ] Have harpoon on JKL;
+  - macros on QWER
+  - yanks on ASDF
+  - global marks on UIOP
 - [ ] Case sensitive substitute
 - [ ] Treesitter injection
 - [ ] Merge kickstart with current 
