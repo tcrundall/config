@@ -21,6 +21,8 @@ return {
 
     -- Add your own debuggers here
     "leoluz/nvim-dap-go",
+    "mfussenegger/nvim-dap-python",
+    "NicholasMata/nvim-dap-cs",
   },
   config = function()
     local dap = require("dap")
@@ -40,15 +42,18 @@ return {
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
         "delve",
+        "debugpy",
       },
     })
 
     -- Basic debugging keymaps, feel free to change to your liking!
     ---@diagnostic disable: undefined-field
+    vim.keymap.set("n", "<F2>", dap.step_into, { desc = "Debug: Step Into TEST" })
+    vim.keymap.set("n", "<F3>", dap.step_over, { desc = "Debug: Step Over" })
+    vim.keymap.set("n", "<F4>", dap.step_out, { desc = "Debug: Step Out" })
     vim.keymap.set("n", "<F5>", dap.continue, { desc = "Debug: Start/Continue" })
-    vim.keymap.set("n", "<F1>", dap.step_into, { desc = "Debug: Step Into" })
-    vim.keymap.set("n", "<F2>", dap.step_over, { desc = "Debug: Step Over" })
-    vim.keymap.set("n", "<F3>", dap.step_out, { desc = "Debug: Step Out" })
+    vim.keymap.set("n", "<F6>", dap.terminate, { desc = "Debug: Terminate" })
+    vim.keymap.set("n", "<F8>", dap.step_back, { desc = "Debug: Step Back" })
     vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" })
     vim.keymap.set("n", "<leader>B", function()
       dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
@@ -87,6 +92,35 @@ return {
     ---@diagnostic enable: undefined-field
 
     -- Install golang specific config
-    require("dap-go").setup()
+    vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+      pattern = "*.go",
+      callback = function()
+        require("dap-go").setup()
+      end,
+    })
+
+    -- Install python specific config
+    local dap_py = require("dap-python")
+    dap_py.setup("~/.virtualenvs/debugpy/bin/python")
+    vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+      group = vim.api.nvim_create_augroup("dap-py", {}),
+      pattern = "*.py",
+      callback = function()
+        print("Configuring DAP for python")
+        vim.keymap.set("n", "<leader>dm", function()
+          dap_py.test_method({ config = { justMyCode = false } })
+        end, { desc = "Debug: python [M]ethod" })
+        vim.keymap.set("n", "<leader>dc", function()
+          dap_py.test_class({ config = { justMyCode = false } })
+        end, { desc = "Debug: python [C]lass" })
+      end,
+    })
+
+    vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+      pattern = "*.cs",
+      callback = function()
+        require("dap-cs").setup()
+      end,
+    })
   end,
 }
