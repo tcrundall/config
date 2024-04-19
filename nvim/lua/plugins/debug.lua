@@ -22,11 +22,13 @@ return {
     -- Add your own debuggers here
     "leoluz/nvim-dap-go",
     "mfussenegger/nvim-dap-python",
-    "NicholasMata/nvim-dap-cs",
+    -- "NicholasMata/nvim-dap-cs",
+    "nvim-treesitter/nvim-treesitter",
   },
   config = function()
     local dap = require("dap")
     local dapui = require("dapui")
+    dap.set_log_level("TRACE")
 
     require("mason-nvim-dap").setup({
       -- Makes a best effort to setup the various debuggers with
@@ -116,11 +118,224 @@ return {
       end,
     })
 
-    vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-      pattern = "*.cs",
-      callback = function()
-        require("dap-cs").setup()
-      end,
-    })
+    -- vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+    --   pattern = "*.cs",
+    --   callback = function()
+    --     require("dap-cs").setup()
+    --   end,
+    -- })
+
+    -- configure for csharp from blog post: https://aaronbos.dev/posts/debugging-csharp-neovim-nvim-dap
+    -- dap.adapters.coreclr = {
+    --   type = "executable",
+    --   command = "/home/crundallt/.local/share/nvim/mason/bin/netcoredbg",
+    --   args = { "--interpreter=vscode" },
+    -- }
+    --
+    -- dap.configurations.cs = {
+    --   {
+    --     type = "coreclr",
+    --     name = "launch - netcoredbg",
+    --     request = "launch",
+    --     program = function()
+    --       return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
+    --     end,
+    --   },
+    -- }
+
+    -- -- from reddit post: https://www.reddit.com/r/csharp/comments/15ktebq/debugging_with_netcoredbg_in_neovim/
+    -- -- User: Zealousideal-Sale358
+    -- dap.adapters.coreclr = {
+    --   type = "executable",
+    --   command = "netcoredbg",
+    --   args = { "--interpreter=vscode" },
+    -- }
+    --
+    -- local function get_root_dir()
+    --   return vim.fn.getcwd()
+    -- end
+    --
+    -- local function ls_dir(dir)
+    --   P(dir)
+    --   return { "example" }
+    -- end
+    --
+    -- dap.configurations.cs = {
+    --   {
+    --     type = "coreclr",
+    --     name = "launch - netcoredbg",
+    --     request = "launch",
+    --     env = "ASPNETCORE_ENVIRONMENT=Development",
+    --     args = {
+    --       "/p:EnvironmentName=Development", -- this is a msbuild jk
+    --       --  this is set via environment variable ASPNETCORE_ENVIRONMENT=Development
+    --       "--urls=http://localhost:5002",
+    --       "--environment=Development",
+    --     },
+    --     program = function()
+    --       -- return vim.fn.getcwd() .. "/bin/Debug/net8.0/FlareHotspotServer.dll"
+    --       local files = ls_dir(get_root_dir() .. "/bin/Debug/")
+    --       if #files == 1 then
+    --         local dotnet_dir = get_root_dir() .. "/bin/Debug/" .. files[1]
+    --         files = ls_dir(dotnet_dir)
+    --         for _, file in ipairs(files) do
+    --           if file:match(".*%.dll") then
+    --             return dotnet_dir .. "/" .. file
+    --           end
+    --         end
+    --       end
+    --       -- return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
+    --       return vim.fn.input({
+    --         prompt = "Path to dll",
+    --         default = get_root_dir() .. "/bin/Debug/",
+    --       })
+    --     end,
+    --   },
+    -- }
+
+    -- -- https://github.com/mfussenegger/nvim-dap/wiki/Cookbook#making-debugging-net-easier
+    -- vim.g.dotnet_build_project = function()
+    --   local default_path = vim.fn.getcwd() .. "/"
+    --   if vim.g["dotnet_last_proj_path"] ~= nil then
+    --     default_path = vim.g["dotnet_last_proj_path"]
+    --   end
+    --   local path = vim.fn.input("Path to your *proj file", default_path, "file")
+    --   vim.g["dotnet_last_proj_path"] = path
+    --   local cmd = "dotnet build -c Debug " .. path .. " > /dev/null"
+    --   print("")
+    --   print("Cmd to execute: " .. cmd)
+    --   local f = os.execute(cmd)
+    --   if f == 0 then
+    --     print("\nBuild: ✔️ ")
+    --   else
+    --     print("\nBuild: ❌ (code: " .. f .. ")")
+    --   end
+    -- end
+    --
+    -- vim.g.dotnet_get_dll_path = function()
+    --   local request = function()
+    --     return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
+    --   end
+    --
+    --   if vim.g["dotnet_last_dll_path"] == nil then
+    --     vim.g["dotnet_last_dll_path"] = request()
+    --   else
+    --     if
+    --       vim.fn.confirm("Do you want to change the path to dll?\n" .. vim.g["dotnet_last_dll_path"], "&yes\n&no", 2)
+    --       == 1
+    --     then
+    --       vim.g["dotnet_last_dll_path"] = request()
+    --     end
+    --   end
+    --
+    --   return vim.g["dotnet_last_dll_path"]
+    -- end
+
+    local ts_utils = require("nvim-treesitter.ts_utils")
+
+    local UNSET = "UNSET"
+    local debug_process_id = ""
+
+    local function get_csharp_method_name()
+      local current_node = ts_utils.get_node_at_cursor()
+      if not current_node then
+        return ""
+      end
+
+      local expr = current_node
+
+      while expr do
+        if expr:type() == "method_declaration" then
+          break
+        end
+        expr = expr:parent()
+      end
+
+      if not expr then
+        print("Returning since no function found")
+        return ""
+      end
+
+      for _, text_line in ipairs(ts_utils.get_node_text(expr)) do
+        local pattern = "public.* (%S+)%("
+        local res = string.match(text_line, pattern)
+        if res then
+          return res
+        end
+      end
+      return ""
+    end
+
+    vim.api.nvim_create_user_command("GetFunctionName", get_csharp_method_name, {})
+
+    -- assumptions:
+    --  * in the test file
+    --  * vim cwd = PROJ_PATH
+    local function get_test_dll()
+      local cwd = vim.fn.getcwd()
+      local tail = string.match(cwd, "Com.*$")
+      local dll_file_full_path = cwd .. "/bin/Debug/net6.0/" .. tail .. ".dll"
+      return dll_file_full_path
+    end
+    get_test_dll()
+
+    local function start_debug()
+      local debug_pid = "UNSET"
+      local method_name = get_csharp_method_name()
+      local dll_file_full_path = get_test_dll()
+      local command = {
+        "dotnet",
+        "test",
+        "--filter",
+        "FullyQualifiedName~" .. method_name,
+        dll_file_full_path,
+      }
+      print(table.concat(command, " "))
+      vim.fn.jobstart(command, {
+        env = {
+          VSTEST_HOST_DEBUG = 1,
+        },
+        stdout_buffered = false,
+        on_stdout = function(_, data_table)
+          for _, line in ipairs(data_table) do
+            if line and debug_pid == "UNSET" then
+              local prefix = "Process Id: "
+              print("Line: ", line)
+              if string.find(line, prefix) then
+                -- debug_pid = string.sub(line, string.len(prefix) + 1, string.len(prefix) + 6)
+                local pattern = "(%d+)"
+                debug_pid = string.match(line, pattern)
+                print("Debug process started with ID: ", debug_pid)
+                debug_process_id = debug_pid
+              end
+            end
+          end
+        end,
+      })
+    end
+
+    vim.api.nvim_create_user_command("DebugTestCSharp", function()
+      start_debug()
+    end, {})
+
+    local cs_config = {
+      {
+        type = "coreclr",
+        name = "attach dynamic - netcoredbg",
+        request = "attach",
+        processId = function()
+          return debug_process_id
+        end,
+        program = get_test_dll(),
+      },
+    }
+
+    dap.adapters.coreclr = {
+      type = "executable",
+      command = "/home/crundallt/.local/share/nvim/mason/bin/netcoredbg",
+      args = { "--interpreter=vscode" },
+    }
+
+    dap.configurations.cs = cs_config
   end,
 }
