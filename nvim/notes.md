@@ -4,20 +4,14 @@
 
 - [ ] Omnisharp lsp - iron out
   - [ ] Set "log level" in omnisharp to Information to show logs maybe?
-  - [x] Set up commands for reattaching to current buffer
-    - this is just :e, or insert some text change and :w
   - [ ] Enable package restore?
-- [x] azure link
 
 ## Wishlist
 
-- [ ] Have harpoon on JKL;
-  - macros on QWER
-  - yanks on ASDF
-  - global marks on UIOP
+- [ ] surround not including spaces
 - [ ] Case sensitive substitute
 - [ ] Treesitter injection
-- [ ] Merge kickstart with current 
+- [ ] Merge kickstart with current
   - [ ] Test out go debugger in kickstarter
 - [ ] Smooth notes system
 - [ ] treesitter highlighting for gotmpl
@@ -27,9 +21,6 @@
   - [ ] doesn't reset on file reentry
 - [ ] commentary
   - don't auto inject comments below or above?
-- [x] Harpoon
-  - [x] hotkeys
-  - [x] Update to v2
 - [ ] Fix testing
   - [x] Get it working
     - Configure nvim with -u /path/to/init.lua
@@ -52,7 +43,31 @@
           "xiyaowong/transparent.nvim"
       }
   ```
+- [x] Have harpoon on JKL;
+  - macros on QWER
+  - yanks on ASDF
+  - global marks on UIOP
 
+## Notes
+
+### DAP
+
+CSharp
+- netcoredbg
+  - (( redit post ))[https://www.reddit.com/r/csharp/comments/15ktebq/debugging_with_netcoredbg_in_neovim/]
+
+go
+1. set a break point in test
+2. set nvim root where go.mod is
+3. Start test:
+  - go: <F5> and choose debug (go.mod)
+  - python: <leader>dm for method, or <leader>dc for class
+
+
+To give attach privileges... but doesnt' seem to attach anyway
+```bash
+ sudo echo "0" > /proc/sys/kernel/yama/ptrace_scope
+```
 
 ## Process
 
