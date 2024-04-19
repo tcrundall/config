@@ -64,7 +64,7 @@ return { -- LSP Configuration & Plugins
           map("gd", require("omnisharp_extended").lsp_definition, "Ext. [G]oto [D]efinition")
           map("gr", require("omnisharp_extended").lsp_references, "Ext. [G]oto [R]eferences")
           map("gI", require("omnisharp_extended").lsp_implementation, "Ext. [G]oto [I]mplementation")
-          map("<leader>D", require("omnisharp_extended").lsp_type_definition, "Ext. [G]oto [D]efinition")
+          map("<leader>D", require("omnisharp_extended").lsp_type_definition, "Ext. goto type [D]efinition")
         end
 
         -- Omnisharp doesn't always handle decompiled files well, so we don't allow it here
