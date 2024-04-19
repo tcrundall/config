@@ -54,7 +54,8 @@
 
 CSharp
 - netcoredbg
-  - (( redit post ))[https://www.reddit.com/r/csharp/comments/15ktebq/debugging_with_netcoredbg_in_neovim/]
+  - [redit post](https://www.reddit.com/r/csharp/comments/15ktebq/debugging_with_netcoredbg_in_neovim/)
+  - [blogpost](https://aaronbos.dev/posts/debugging-csharp-neovim-nvim-dap)
 
 go
 1. set a break point in test
@@ -68,6 +69,24 @@ To give attach privileges... but doesnt' seem to attach anyway
 ```bash
  sudo echo "0" > /proc/sys/kernel/yama/ptrace_scope
 ```
+
+Manually debugging a test can be done so:
+1. Start the test in debug mode
+```bash
+VSTEST_HOST_DEBUG=1 dotnet test path/to/*dll
+```
+2. Wait for the PID to be displayed, substitute as <pid> below
+```bash
+netcoredbg -ex "break src/App/Program.cs:50" --attach <pid>
+```
+
+Another example
+```bash
+VSTEST_HOST_DEBUG=1 dotnet test --filter "FullyQualifiedName~ResourceConfigSuccessfullyParsesValidOrMissingEnvironmentVariables" path/to/*.dll
+netcoredbg -ex "break UnitTests/Resource/ResourceConfigTest.cs:30" --attach 20985
+```
+2 commands
+Trigger test, then send a netcoredbg command with appropriate ID
 
 ## Process
 

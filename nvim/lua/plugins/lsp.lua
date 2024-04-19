@@ -32,7 +32,7 @@ return { -- LSP Configuration & Plugins
       callback = function(event)
         -- Print message upon first time through
         local client = vim.lsp.get_client_by_id(event.data.client_id)
-        if initialized[client.name] ~= true then
+        if client ~= nil and initialized[client.name] ~= true then
           print("Client " .. client.name .. " initialized = " .. tostring(client.initialized))
           initialized[client.name] = true
         end
@@ -59,7 +59,7 @@ return { -- LSP Configuration & Plugins
         map("K", vim.lsp.buf.hover, "Hover Documentation")
         map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
-        if client.name == "omnisharp" then
+        if client ~= nil and client.name == "omnisharp" then
           -- Define custom omnisharp extension mappings
           map("gd", require("omnisharp_extended").lsp_definition, "Ext. [G]oto [D]efinition")
           map("gr", require("omnisharp_extended").lsp_references, "Ext. [G]oto [R]eferences")

@@ -76,7 +76,7 @@ return {
         save_on_ui_close = true,
       } })
       vim.keymap.set("n", "<leader>a", function()
-        harpoon:list():append()
+        harpoon:list():add()
       end)
       vim.keymap.set("n", "<leader><tab>", function()
         harpoon.ui:toggle_quick_menu(harpoon:list())
