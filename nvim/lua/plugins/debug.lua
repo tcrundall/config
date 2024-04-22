@@ -277,7 +277,6 @@ return {
       local dll_file_full_path = cwd .. "/bin/Debug/net6.0/" .. tail .. ".dll"
       return dll_file_full_path
     end
-    get_test_dll()
 
     local function start_debug()
       local debug_pid = "UNSET"
@@ -326,7 +325,7 @@ return {
         processId = function()
           return debug_process_id
         end,
-        program = get_test_dll(),
+        program = get_test_dll,
       },
     }
 

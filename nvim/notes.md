@@ -96,3 +96,11 @@ Trigger test, then send a netcoredbg command with appropriate ID
 - Upon each review:
   - Delete all completed tasks
   - Delete all irrelevant tasks
+
+remove following commits
+3b0336c Get C# debugging of unit tests working
+5b2be97 Debug tool working but too manual
+b75a498 Some more random progress on debugger
+d234076 Garbage attempt to use system
+52fae1b Messy but working hardcoded testing
+73ae9c9 Almost got csharp debugging working
