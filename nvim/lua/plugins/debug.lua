@@ -108,7 +108,6 @@ return {
       group = vim.api.nvim_create_augroup("dap-py", {}),
       pattern = "*.py",
       callback = function()
-        print("Configuring DAP for python")
         vim.keymap.set("n", "<leader>dm", function()
           dap_py.test_method({ config = { justMyCode = false } })
         end, { desc = "Debug: python [M]ethod" })
