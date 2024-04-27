@@ -7,6 +7,6 @@ return {
       vim.cmd("0Gclog")
     end, { desc = "[G]it [H]istory of current buffer" })
 
-    vim.keymap.set("n", "<leader>gl", "<cmd>Git log -n 25<cr>", { desc = "[G]it [L]og" })
+    vim.keymap.set("n", "<leader>gl", "<cmd>Git log -n 25<cr><c-w><s-l>", { desc = "[G]it [L]og" })
   end,
 }
