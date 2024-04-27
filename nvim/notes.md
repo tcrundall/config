@@ -9,6 +9,9 @@
 ## Wishlist
 
 - [ ] surround not including spaces
+- [ ] Get case smart substition working again
+- [ ] Trouble
+- [ ] Fix cmp suggestion not being top of list
 - [ ] Case sensitive substitute
 - [ ] Treesitter injection
 - [ ] Merge kickstart with current

@@ -119,6 +119,7 @@ return {
         python = { "black", "isort" },
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
+        go = { "goimports", "gofmt" },
         -- is found.
         -- javascript = { { "prettierd", "prettier" } },
         -- cs = { "csharpier" },
