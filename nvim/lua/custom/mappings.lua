@@ -79,12 +79,11 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
   pattern = "*.go",
   callback = function()
     vim.o.tabstop = 4
-    -- vim.keymap.set("n", "<leader><leader>x", "<cmd>w<cr><cmd>!zig run %<cr>", { desc = "e[X]ecute current zig file" })
-    -- vim.keymap.set("n", "<leader><leader>t", "<cmd>w<cr><cmd>!zig test %<cr>", { desc = "[T]est current zig file" })
+    vim.o.shiftwidth = 4
+    vim.keymap.set("n", "<leader><leader>t", "<cmd>w<cr><cmd>!go test %:.<cr>", { desc = "[T]est current go file" })
+    vim.keymap.set("n", "<leader><leader>T", "<cmd>w<cr><cmd>!go test ./...<cr>", { desc = "[T]est entire go project" })
   end,
 })
-
-vim.keymap.set("n", "<leader><leader>x", "<cmd>w<cr><cmd>source %<cr>", { desc = "e[X]ecute current lua file" })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
