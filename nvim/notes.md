@@ -8,6 +8,7 @@
 
 ## Wishlist
 
+- [ ] Force LSP to reload all open buffers (e.g. what I expect with `e!`)
 - [ ] surround not including spaces
 - [ ] Get case smart substition working again
 - [ ] Trouble
