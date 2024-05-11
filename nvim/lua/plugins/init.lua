@@ -148,6 +148,18 @@ return {
     },
   },
 
+  {
+    "catppuccin/nvim",
+    lazy = false,
+    priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
+      require("catppuccin").setup({
+        transparent_background = true,
+      })
+      -- vim.cmd.colorscheme("catppuccin-latte")
+    end,
+  },
+
   { -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`
     "folke/tokyonight.nvim",
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
@@ -155,16 +167,19 @@ return {
     config = function()
       local opts = {
         transparent = true,
+        -- transparent = false,
         styles = {
-          sidebars = "none",
+          -- sidebars = "none",
         },
       }
       require("tokyonight").setup(opts)
       vim.cmd.colorscheme("tokyonight-night")
+      -- vim.cmd.colorscheme("tokyonight-day")
       -- You can configure highlights by doing something like
       -- vim.cmd.hi 'Comment gui=none'
     end,
   },
+
   {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
