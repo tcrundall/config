@@ -272,8 +272,15 @@ return {
     --  * vim cwd = PROJ_PATH
     local function get_test_dll()
       local cwd = vim.fn.getcwd()
-      local tail = string.match(cwd, "Com.*$")
-      local dll_file_full_path = cwd .. "/bin/Debug/net6.0/" .. tail .. ".dll"
+
+      -- Get name of current directory in order to infer .dll filename
+      -- TODO: Infer instead from .csproj file
+      local final_dir_index = string.find(cwd, "[^/]*$")
+      if final_dir_index == nil then
+        return nil
+      end
+      local tail = string.sub(cwd, final_dir_index)
+      local dll_file_full_path = cwd .. "/bin/Debug/net8.0/" .. tail .. ".dll"
       return dll_file_full_path
     end
 
@@ -328,9 +335,10 @@ return {
       },
     }
 
+    local netcoredbg_cmd = vim.fn.expand("~") .. "/.local/share/nvim/mason/bin/netcoredbg"
     dap.adapters.coreclr = {
       type = "executable",
-      command = "/home/crundallt/.local/share/nvim/mason/bin/netcoredbg",
+      command = netcoredbg_cmd,
       args = { "--interpreter=vscode" },
     }
 
