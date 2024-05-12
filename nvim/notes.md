@@ -8,15 +8,16 @@
 
 ## Wishlist
 
+- [ ] Set up error format and mappings for dotnet test
 - [ ] Force LSP to reload all open buffers (e.g. what I expect with `e!`)
 - [ ] surround not including spaces
 - [ ] Get case smart substition working again
-- [ ] Trouble
+- [x] Trouble
 - [ ] Fix cmp suggestion not being top of list
 - [ ] Case sensitive substitute
 - [ ] Treesitter injection
-- [ ] Merge kickstart with current
-  - [ ] Test out go debugger in kickstarter
+- [x] Merge kickstart with current
+  - [x] Test out go debugger in kickstarter
 - [ ] Smooth notes system
 - [ ] treesitter highlighting for gotmpl
   - https://github.com/LunarVim/breadcrumbs.nvim
@@ -35,7 +36,7 @@
   - [ ] Set up keymaps and central minimal init
 
 ## TODO
-- [ ] practice merge conflict resolution
+- [x] practice merge conflict resolution
   - [ ] lazygit?
 - [ ] Understand filetype indent stuff: `help filetype.txt`
   - in the meantime, just use :Sleuth to match current file
@@ -48,10 +49,12 @@
           "xiyaowong/transparent.nvim"
       }
   ```
-- [x] Have harpoon on JKL;
+- Standardized registers
+  - harpoon on <meta> JKL;
   - macros on QWER
   - yanks on ASDF
-  - global marks on UIOP
+  - local marks on asdf
+  - global marks on ASDF
 
 ## Notes
 
