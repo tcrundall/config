@@ -246,6 +246,18 @@ return { -- LSP Configuration & Plugins
     vim.list_extend(ensure_installed, {
       "stylua", -- Used to format lua code
     })
+
+    -- later versions have an issue https://github.com/OmniSharp/omnisharp-roslyn/issues/2574
+    -- trying to pin, following this, didn't work:
+    -- https://www.reddit.com/r/neovim/comments/12ijhh8/can_you_version_language_servers_installed_via/
+    -- instead, just manually keep at 1.39.8
+    -- vim.cmd("MasonInstall omnisharp@v1.39.8")
+    -- for k, v in pairs(ensure_installed) do
+    --   if v == "omnisharp" then
+    --     table.remove(ensure_installed, k)
+    --   end
+    -- end
+    -- ensure_installed = {"omnisharp@v1.39.8"}
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
     require("mason-lspconfig").setup({
