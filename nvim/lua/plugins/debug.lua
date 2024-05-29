@@ -280,7 +280,8 @@ return {
         return nil
       end
       local tail = string.sub(cwd, final_dir_index)
-      local dll_file_full_path = cwd .. "/bin/Debug/net8.0/" .. tail .. ".dll"
+      -- TODO: Have this be dynamic between .NET versions (6.0 and 8.0)
+      local dll_file_full_path = cwd .. "/bin/Debug/net6.0/" .. tail .. ".dll"
       return dll_file_full_path
     end
 
