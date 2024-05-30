@@ -40,6 +40,25 @@ return { -- Highlight, edit, and navigate code
       },
     })
 
+    vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+      callback = function()
+        -- :help vim.v, v:foldlevel, foldtext
+        -- https://vi.stackexchange.com/questions/43847/how-to-set-the-value-of-foldexpr-to-be-a-lua-function
+        _G.get_fold_text = function()
+          local n_folded_lines = vim.v.foldend - vim.v.foldstart + 1
+          return string.format(
+            "%s + %s lines",
+            vim.fn.getline(vim.v.foldstart),
+            n_folded_lines
+          )
+        end
+
+        vim.opt.foldmethod = "expr"
+        vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+        vim.opt.foldtext = "v:lua.get_fold_text()"
+      end,
+    })
+
     -- There are additional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:
     --
