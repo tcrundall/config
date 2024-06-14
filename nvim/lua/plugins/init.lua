@@ -11,6 +11,8 @@ return {
   -- { dir = "~/Coding/nvim/stackmap.nvim/", opts = { key = "value" } },
   "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically TODO: Understand what this does
 
+  "shortcuts/no-neck-pain.nvim", -- center current buffer
+
   "tpope/vim-abolish", -- handle variations of words in e.g. substituion
   "christoomey/vim-tmux-navigator", -- switch between tmux and nvim panes
   {
