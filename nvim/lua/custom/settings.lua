@@ -10,6 +10,9 @@ vim.g.have_nerd_font = true
 -- See `:help vim.opt`
 -- `:help option-list`
 
+-- Ensure initial fold level is at max
+vim.opt.foldlevel = 99
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 

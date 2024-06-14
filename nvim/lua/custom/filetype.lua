@@ -27,7 +27,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
     vim.keymap.set(
       "n",
       "<leader><leader>b",
-      "<cmd>!dotnet build > errors.out<cr>",
+      "<cmd>!dotnet build | tee errors.out<cr>",
       { desc = "[B]uild current csharp project" }
     )
     vim.keymap.set("n", "<leader><leader>e", "<cmd>cf errors.out<cr>", { desc = "Open [E]rrors in quickfix list" })
