@@ -26,7 +26,7 @@ return { -- Highlight, edit, and navigate code
       auto_install = true,
       highlight = {
         enable = true,
-        additional_vim_regex_highlighting = true,
+        additional_vim_regex_highlighting = false,
       },
       indent = { enable = true },
       incremental_selection = {
@@ -45,11 +45,17 @@ return { -- Highlight, edit, and navigate code
         -- :help vim.v, v:foldlevel, foldtext
         -- https://vi.stackexchange.com/questions/43847/how-to-set-the-value-of-foldexpr-to-be-a-lua-function
         _G.get_fold_text = function()
+          local line_length = 60
           local n_folded_lines = vim.v.foldend - vim.v.foldstart + 1
-          return string.format(
-            "%s + %s lines",
-            vim.fn.getline(vim.v.foldstart),
-            n_folded_lines
+          local fold_title = vim.fn.getline(vim.v.foldstart)
+            .. string.rep(" ", line_length)
+          local folded_lines_tag = string.format("  + %s lines", n_folded_lines)
+          return (
+            string.sub(
+              fold_title,
+              1,
+              line_length - string.len(folded_lines_tag)
+            ) .. folded_lines_tag
           )
         end
 
