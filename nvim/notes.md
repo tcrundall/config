@@ -10,23 +10,14 @@
 
 - [ ] Get conceal behaving nicely in markdown
 - [ ] Jump to linked markdown header
-- [x] show hidden files in telescope
 - [ ] Set up error format and mappings for dotnet test
 - [ ] Force LSP to reload all open buffers (e.g. what I expect with `e!`)
 - [ ] surround not including spaces
-- [x] Get case smart substition working again
-- [x] Trouble
 - [ ] Fix cmp suggestion not being top of list
-- [x] Case sensitive substitute
 - [ ] Treesitter injection
-- [x] Merge kickstart with current
-  - [x] Test out go debugger in kickstarter
 - [ ] Smooth notes system
 - [ ] treesitter highlighting for gotmpl
   - https://github.com/LunarVim/breadcrumbs.nvim
-- [x] fix folding
-  - [x] no folds in finder
-  - [x] doesn't reset on file reentry
 - [ ] commentary
   - don't auto inject comments below or above?
 - [ ] Fix testing
@@ -39,8 +30,6 @@
   - [ ] Set up keymaps and central minimal init
 
 ## TODO
-- [x] practice merge conflict resolution
-  - [ ] lazygit?
 - [ ] Understand filetype indent stuff: `help filetype.txt`
   - in the meantime, just use :Sleuth to match current file
 - [ ] Look into [searching all buffers](https://stackoverflow.com/questions/2450887/vim-searching-through-all-existing-buffers)
