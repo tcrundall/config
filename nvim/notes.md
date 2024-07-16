@@ -8,22 +8,23 @@
 
 ## Wishlist
 
+- [x] show hidden files in telescope
 - [ ] Set up error format and mappings for dotnet test
 - [ ] Force LSP to reload all open buffers (e.g. what I expect with `e!`)
 - [ ] surround not including spaces
-- [ ] Get case smart substition working again
+- [x] Get case smart substition working again
 - [x] Trouble
 - [ ] Fix cmp suggestion not being top of list
-- [ ] Case sensitive substitute
+- [x] Case sensitive substitute
 - [ ] Treesitter injection
 - [x] Merge kickstart with current
   - [x] Test out go debugger in kickstarter
 - [ ] Smooth notes system
 - [ ] treesitter highlighting for gotmpl
   - https://github.com/LunarVim/breadcrumbs.nvim
-- [ ] fix folding
-  - [ ] no folds in finder
-  - [ ] doesn't reset on file reentry
+- [x] fix folding
+  - [x] no folds in finder
+  - [x] doesn't reset on file reentry
 - [ ] commentary
   - don't auto inject comments below or above?
 - [ ] Fix testing
