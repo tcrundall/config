@@ -8,6 +8,8 @@
 
 ## Wishlist
 
+- [ ] Get conceal behaving nicely in markdown
+- [ ] Jump to linked markdown header
 - [x] show hidden files in telescope
 - [ ] Set up error format and mappings for dotnet test
 - [ ] Force LSP to reload all open buffers (e.g. what I expect with `e!`)
@@ -57,6 +59,10 @@
   - local marks on asdf
   - global marks on ASDF
 
+## Waiting for
+
+- [ ] Project to upgrade to dotnet 8.0 so I can use csharp-ls
+
 ## Notes
 
 ### DAP
@@ -103,3 +109,8 @@ Trigger test, then send a netcoredbg command with appropriate ID
   - Delete all completed tasks
   - Delete all irrelevant tasks
 
+### Csharp LSP
+
+csharp_ls seems more stable, but only works for .NET 8
+when finally viable, can also use extended lsp just like omnisharp:
+[csharpls-extended](https://github.com/Decodetalkers/csharpls-extended-lsp.nvim)

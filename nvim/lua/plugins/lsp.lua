@@ -1,5 +1,66 @@
 local initialized = {}
 
+local use_omnisharp = true
+local csharp_lsp = ""
+if use_omnisharp then
+  csharp_lsp = "Hoffs/omnisharp-extended-lsp.nvim"
+else
+  csharp_lsp = "razzmatazz/csharp-language-server"
+end
+
+local csharp_lsp_opts = {}
+if use_omnisharp then
+  csharp_lsp_opts = {
+    omnisharp = {
+      settings = {
+        cmd = { "OmniSharp" },
+        -- Enables support for reading code style, naming convention and analyzer
+        -- settings from .editorconfig.
+        enable_editorconfig_support = true,
+
+        -- If true, MSBuild project system will only load projects for files that
+        -- were opened in the editor. This setting is useful for big C# codebases
+        -- and allows for faster initialization of code navigation features only
+        -- for projects that are relevant to code that is being edited. With this
+        -- setting enabled OmniSharp may load fewer projects and may thus display
+        -- incomplete reference lists for symbols.
+        enable_ms_build_load_projects_on_demand = false,
+
+        -- Enables support for roslyn analyzers, code fixes and rulesets.
+        enable_roslyn_analyzers = true,
+
+        -- Specifies whether 'using' directives should be grouped and sorted during
+        -- document formatting.
+        organize_imports_on_format = false,
+
+        -- Enables support for showing unimported types and unimported extension
+        -- methods in completion lists. When committed, the appropriate using
+        -- directive will be added at the top of the current file. This option can
+        -- have a negative impact on initial completion responsiveness,
+        -- particularly for the first few completion sessions after opening a
+        -- solution.
+        enable_import_completion = true,
+
+        -- Specifies whether to include preview versions of the .NET SDK when
+        -- determining which version to use for project loading.
+        sdk_include_prereleases = true,
+
+        -- Only run analyzers against open files when 'enableRoslynAnalyzers' is
+        -- true
+        analyze_open_documents_only = true,
+      },
+    },
+  }
+else
+  csharp_lsp_opts = {
+    csharp_ls = {
+      settings = {
+        cmd = "dotnet tool csharp-ls",
+      },
+    },
+  }
+end
+
 return { -- LSP Configuration & Plugins
   "neovim/nvim-lspconfig",
   dependencies = {
@@ -7,10 +68,7 @@ return { -- LSP Configuration & Plugins
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
-    "Hoffs/omnisharp-extended-lsp.nvim",
-    -- {
-    --   dir = "~/Coding/nvim/omnisharp-extended-lsp.nvim/",
-    -- },
+    csharp_lsp,
 
     -- Useful status updates for LSP.
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -59,12 +117,14 @@ return { -- LSP Configuration & Plugins
         map("K", vim.lsp.buf.hover, "Hover Documentation")
         map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
-        if client ~= nil and client.name == "omnisharp" then
-          -- Define custom omnisharp extension mappings
-          map("gd", require("omnisharp_extended").lsp_definition, "Ext. [G]oto [D]efinition")
-          map("gr", require("omnisharp_extended").lsp_references, "Ext. [G]oto [R]eferences")
-          map("gI", require("omnisharp_extended").lsp_implementation, "Ext. [G]oto [I]mplementation")
-          map("<leader>D", require("omnisharp_extended").lsp_type_definition, "Ext. goto type [D]efinition")
+        if use_omnisharp then
+          if client ~= nil and client.name == "omnisharp" then
+            -- Define custom omnisharp extension mappings
+            map("gd", require("omnisharp_extended").lsp_definition, "Ext. [G]oto [D]efinition")
+            map("gr", require("omnisharp_extended").lsp_references, "Ext. [G]oto [R]eferences")
+            map("gI", require("omnisharp_extended").lsp_implementation, "Ext. [G]oto [I]mplementation")
+            map("<leader>D", require("omnisharp_extended").lsp_type_definition, "Ext. goto type [D]efinition")
+          end
         end
 
         -- Omnisharp doesn't always handle decompiled files well, so we don't allow it here
@@ -131,45 +191,6 @@ return { -- LSP Configuration & Plugins
 
       -- See https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/omnisharp.lua
       -- for available options
-      omnisharp = {
-        settings = {
-          cmd = { "OmniSharp" },
-          -- Enables support for reading code style, naming convention and analyzer
-          -- settings from .editorconfig.
-          enable_editorconfig_support = true,
-
-          -- If true, MSBuild project system will only load projects for files that
-          -- were opened in the editor. This setting is useful for big C# codebases
-          -- and allows for faster initialization of code navigation features only
-          -- for projects that are relevant to code that is being edited. With this
-          -- setting enabled OmniSharp may load fewer projects and may thus display
-          -- incomplete reference lists for symbols.
-          enable_ms_build_load_projects_on_demand = false,
-
-          -- Enables support for roslyn analyzers, code fixes and rulesets.
-          enable_roslyn_analyzers = true,
-
-          -- Specifies whether 'using' directives should be grouped and sorted during
-          -- document formatting.
-          organize_imports_on_format = false,
-
-          -- Enables support for showing unimported types and unimported extension
-          -- methods in completion lists. When committed, the appropriate using
-          -- directive will be added at the top of the current file. This option can
-          -- have a negative impact on initial completion responsiveness,
-          -- particularly for the first few completion sessions after opening a
-          -- solution.
-          enable_import_completion = true,
-
-          -- Specifies whether to include preview versions of the .NET SDK when
-          -- determining which version to use for project loading.
-          sdk_include_prereleases = true,
-
-          -- Only run analyzers against open files when 'enableRoslynAnalyzers' is
-          -- true
-          analyze_open_documents_only = true,
-        },
-      },
 
       azure_pipelines_ls = {
         root_dir = require("lspconfig.util").find_git_ancestor,
@@ -231,6 +252,8 @@ return { -- LSP Configuration & Plugins
         },
       },
     }
+
+    vim.tbl_extend("error", servers, csharp_lsp_opts)
 
     -- Ensure the servers and tools above are installed
     --  To check the current status of installed tools and/or manually install
