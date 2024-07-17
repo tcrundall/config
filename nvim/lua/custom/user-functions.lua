@@ -19,7 +19,6 @@ local githubLink = function(opts)
   local filename = vim.fn.expand("%:p:.")
   local url = base_url .. repo_name .. "/blob/" .. target .. "/" .. filename .. "#L" .. opts.line1 .. "-L" .. opts.line2
   vim.fn.setreg("*", url)
-  print(url)
   return url
 end
 
@@ -68,6 +67,48 @@ local getFileNameWithAdoLink = function(opts)
   P(filenameWithAdoLink)
   return filenameWithAdoLink
 end
+
+local function replace(s, old, new)
+  while true do
+    local start, finish = string.find(s, old)
+    if start == nil then
+      break
+    end
+    s = string.sub(s, 0, start - 1) .. new .. string.sub(s, finish + 1)
+  end
+  return s
+end
+
+vim.api.nvim_create_user_command("FollowLink", function(opts)
+  -- Capture everything betwen "(" and ")"
+  local current_line = vim.api.nvim_get_current_line()
+  local cursor_pos = vim.api.nvim_win_get_cursor(0)
+  local col_num = cursor_pos[2]
+  local start_pos = string.find(current_line, "%(", col_num)
+  local end_pos = string.find(current_line, "%)", col_num)
+
+  if start_pos == nil or end_pos == nil then
+    return
+  end
+  local address = string.sub(current_line, start_pos + 1, end_pos - 1)
+
+  if string.sub(address, 1, 1) == "#" then
+    -- markdown header in same file
+    local markdown_header = string.sub(address, 2)
+    local search_phrase = "^#\\+\\s*" .. replace(markdown_header, "-", ".*")
+    local enter = vim.api.nvim_replace_termcodes("<CR>", true, false, true)
+    local escape = vim.api.nvim_replace_termcodes("<ESC>", true, false, true)
+    vim.api.nvim_feedkeys("/" .. search_phrase .. enter .. "n:noh" .. enter, "n", true)
+  elseif string.sub(address, 1, 4) == "http" then
+    -- webpage
+    print(string.sub(address, 1, 4))
+    vim.fn.execute("!google-chrome " .. address, "silent")
+  else
+    -- filename
+    print("Didn't recognise link...")
+    print(string.sub(address, 1, 4))
+  end
+end, { range = false, nargs = 0 })
 
 vim.api.nvim_create_user_command("LinkToGit", function(opts)
   githubLink(opts)

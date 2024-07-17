@@ -37,12 +37,13 @@ vim.keymap.set("n", "<leader>h", "<C-W>10<")
 vim.keymap.set("n", "<leader>j", "<C-W>5+")
 vim.keymap.set("n", "<leader>k", "<C-W>5-")
 
-vim.keymap.set(
-  "n",
-  "gx",
-  [[:silent execute '!google-chrome ' . shellescape(expand('<cfile>'), 1)<CR>]],
-  { desc = "[G]o to [X]webpage" }
-)
+-- vim.keymap.set(
+--   "n",
+--   "gx",
+--   [[:silent execute '!google-chrome ' . shellescape(expand('<cfile>'), 1)<CR>]],
+--   { desc = "[G]o to [X]webpage" }
+-- )
+vim.api.nvim_set_keymap("n", "gx", "<cmd>FollowLink<cr>", {})
 
 -- Shift highlighed lines up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")

@@ -1,5 +1,7 @@
 # Notes
 
+Go to [waiting for](#waiting-for)
+
 ## Target
 
 - [ ] Omnisharp lsp - iron out
@@ -56,6 +58,8 @@
 ## Notes
 
 ### DAP
+
+Go to [waitingfor](#waiting-for)
 
 CSharp
 - netcoredbg
