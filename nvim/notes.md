@@ -10,6 +10,7 @@ Go to [waiting for](#waiting-for)
 
 ## Wishlist
 
+- [ ] Smart imports for go
 - [ ] Get conceal behaving nicely in markdown
 - [ ] Jump to linked markdown header
 - [ ] Add zz after ( or )
