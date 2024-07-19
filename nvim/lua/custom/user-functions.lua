@@ -79,7 +79,7 @@ local function replace(s, old, new)
   return s
 end
 
-vim.api.nvim_create_user_command("FollowLink", function(opts)
+vim.api.nvim_create_user_command("FollowLink", function(_)
   -- Capture everything betwen "(" and ")"
   local current_line = vim.api.nvim_get_current_line()
   local cursor_pos = vim.api.nvim_win_get_cursor(0)
@@ -97,16 +97,16 @@ vim.api.nvim_create_user_command("FollowLink", function(opts)
     local markdown_header = string.sub(address, 2)
     local search_phrase = "^#\\+\\s*" .. replace(markdown_header, "-", ".*")
     local enter = vim.api.nvim_replace_termcodes("<CR>", true, false, true)
-    local escape = vim.api.nvim_replace_termcodes("<ESC>", true, false, true)
-    vim.api.nvim_feedkeys("/" .. search_phrase .. enter .. "n:noh" .. enter, "n", true)
+    vim.api.nvim_feedkeys("/" .. search_phrase .. enter .. "nzz:noh" .. enter, "n", true)
   elseif string.sub(address, 1, 4) == "http" then
     -- webpage
     print(string.sub(address, 1, 4))
     vim.fn.execute("!google-chrome " .. address, "silent")
   else
     -- filename
-    print("Didn't recognise link...")
-    print(string.sub(address, 1, 4))
+    local cwd = vim.fn.expand("%:h")
+    vim.cmd("e " .. cwd .. "/" .. address)
+    print(cwd .. "/" .. address)
   end
 end, { range = false, nargs = 0 })
 
