@@ -69,14 +69,30 @@ local getFileNameWithAdoLink = function(opts)
 end
 
 local function replace(s, old, new)
+  local result = ""
   while true do
     local start, finish = string.find(s, old)
     if start == nil then
       break
     end
-    s = string.sub(s, 0, start - 1) .. new .. string.sub(s, finish + 1)
+    result = result .. string.sub(s, 0, start - 1) .. new
+    s = string.sub(s, finish + 1)
   end
-  return s
+  return result .. s
+end
+
+local function find_last(s, pattern, end_pos)
+  local ix = 0 ---@type integer | nil
+  local position = nil
+  while ix ~= nil and ix < end_pos do
+    ix = string.find(s, pattern, ix)
+    if ix == nil then
+      break
+    end
+    position = ix
+    ix = ix + 1
+  end
+  return position
 end
 
 local function follow_link()
@@ -84,13 +100,18 @@ local function follow_link()
   local current_line = vim.api.nvim_get_current_line()
   local cursor_pos = vim.api.nvim_win_get_cursor(0)
   local col_num = cursor_pos[2]
-  local start_pos = string.find(current_line, "%(", col_num)
   local end_pos = string.find(current_line, "%)", col_num)
+  if end_pos == nil then
+    print("Could not find ')' after cursor position")
+  end
+  local start_pos = find_last(current_line, "%(", end_pos)
 
-  if start_pos == nil or end_pos == nil then
+  if start_pos == nil then
+    print("Could not find matching '(' before column " .. col_num)
     return
   end
   local address = string.sub(current_line, start_pos + 1, end_pos - 1)
+  print("Address: ", address)
 
   if string.sub(address, 1, 1) == "#" then
     -- markdown header in same file
@@ -100,7 +121,7 @@ local function follow_link()
     vim.api.nvim_feedkeys("/" .. search_phrase .. enter .. "nzz:noh" .. enter, "n", true)
   elseif string.sub(address, 1, 4) == "http" then
     -- webpage
-    print(string.sub(address, 1, 4))
+    address = replace(address, "#", "\\#")
     vim.fn.execute("!google-chrome " .. address, "silent")
   else
     -- filename
