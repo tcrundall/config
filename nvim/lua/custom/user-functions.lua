@@ -79,7 +79,7 @@ local function replace(s, old, new)
   return s
 end
 
-vim.api.nvim_create_user_command("FollowLink", function(_)
+local function follow_link()
   -- Capture everything betwen "(" and ")"
   local current_line = vim.api.nvim_get_current_line()
   local cursor_pos = vim.api.nvim_win_get_cursor(0)
@@ -104,10 +104,17 @@ vim.api.nvim_create_user_command("FollowLink", function(_)
     vim.fn.execute("!google-chrome " .. address, "silent")
   else
     -- filename
-    local cwd = vim.fn.expand("%:h")
-    vim.cmd("e " .. cwd .. "/" .. address)
-    print(cwd .. "/" .. address)
+    local relative_link = string.sub(address, 1, 1) == "."
+    if relative_link then
+      local cwd = vim.fn.expand("%:h")
+      address = vim.fn.simplify(cwd .. "/" .. address)
+    end
+    vim.cmd("e " .. address)
   end
+end
+
+vim.api.nvim_create_user_command("FollowLink", function()
+  follow_link()
 end, { range = false, nargs = 0 })
 
 vim.api.nvim_create_user_command("LinkToGit", function(opts)

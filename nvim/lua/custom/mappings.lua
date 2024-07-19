@@ -37,13 +37,17 @@ vim.keymap.set("n", "<leader>h", "<C-W>10<")
 vim.keymap.set("n", "<leader>j", "<C-W>5+")
 vim.keymap.set("n", "<leader>k", "<C-W>5-")
 
--- vim.keymap.set(
---   "n",
---   "gx",
---   [[:silent execute '!google-chrome ' . shellescape(expand('<cfile>'), 1)<CR>]],
---   { desc = "[G]o to [X]webpage" }
--- )
-vim.api.nvim_set_keymap("n", "gx", "<cmd>FollowLink<cr>", {})
+-- Open url under cursor in browser
+vim.keymap.set(
+  "n",
+  "gx",
+  [[:silent execute '!google-chrome ' . shellescape(expand('<cfile>'), 1)<CR>]],
+  { desc = "[G]o to [X]webpage" }
+)
+
+-- Identify links of form [text](link) and follow links of type
+-- relative file, absolute file (from "cwd"), url and markdown heading
+vim.api.nvim_set_keymap("n", "gl", "<cmd>FollowLink<cr>", { desc = "[G]o to [L]ink" })
 
 -- Shift highlighed lines up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")

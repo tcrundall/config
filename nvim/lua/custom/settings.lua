@@ -13,6 +13,9 @@ vim.g.have_nerd_font = true
 -- Ensure initial fold level is at max
 vim.opt.foldlevel = 99
 
+-- Concel links in e.g. markdown
+vim.opt.conceallevel = 3
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 
