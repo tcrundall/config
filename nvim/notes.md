@@ -115,6 +115,11 @@ when finally viable, can also use extended lsp just like omnisharp:
 
 Go to [waiting for](#waiting-for)
 - [tflint](https://github.com/terraform-linters/tflint#installation)
+go to [file](../tmux/notes.md)
+go to [pdf](~/Google_Drive/ECKRZV.pdf)
+go to [png](~/Pictures/algorithms.png)
+go to [jpg](~/Pictures/australian_media_ bias copy.jpg)
+file with [spaces](../some file.txt)
 
 - [dotnet-sdk](https://dotnet.microsoft.com/download) (see [global.json](https://dev.azure.com/cmd-sw/Discoverer/_git/chimerys?path=%2Fglobal.json&_a=contents) for required version)
 

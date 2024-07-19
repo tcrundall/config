@@ -1,13 +1,18 @@
 local function jump_to_markdown_header(link)
   local markdown_header = link:sub(2)
-  local search_phrase = "^#\\+\\s*" .. Replace(markdown_header, "-", ".*")
+  local search_phrase = "^#\\+\\s*" .. markdown_header:gsub("-", ".*")
   local enter = vim.api.nvim_replace_termcodes("<CR>", true, false, true)
   vim.api.nvim_feedkeys("/" .. search_phrase .. enter .. "nzz:noh" .. enter, "n", true)
 end
 
 local function jump_to_url(link)
-  link = Replace(link, "#", "\\#")
+  link = link:gsub("#", "\\#")
   vim.fn.execute("!google-chrome " .. link, "silent")
+end
+
+local function get_file_extension(path)
+  local pattern = ".*%.(%a*)$"
+  return path:match(pattern)
 end
 
 local function jump_to_file(address)
@@ -18,12 +23,26 @@ local function jump_to_file(address)
     address = vim.fn.simplify(dir_of_current_file .. "/" .. address)
   end
 
-  if vim.uv.fs_stat(address) ~= nil then
-    vim.cmd("e " .. address)
-  else
+  -- openable files
+  local file_extension = get_file_extension(address)
+  local openable_extensions = { "pdf", "png", "jpg", "jpeg", "xlsx", "doc", "docx" }
+  for _, extension in pairs(openable_extensions) do
+    if file_extension == extension then
+      -- vim.fn.execute("!open " .. address, "silent")
+      print("Opening cause extension found: ", file_extension)
+      address = address:gsub(" ", "\\ ")
+      vim.fn.execute("!open " .. address)
+      return
+    end
+  end
+
+  if vim.uv.fs_stat(address) == nil then
     print("File does not seem to exist")
     print(address)
+    return
   end
+
+  vim.cmd("e " .. address)
 end
 
 local function is_valid_markdown_link(str, open_paren_ix, close_paren_ix)
