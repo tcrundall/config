@@ -11,8 +11,9 @@ Go to [waiting for](#waiting-for)
 ## Wishlist
 
 - [ ] Smart imports for go
+- [ ] Extend link follower to follow file names
 - [ ] Get conceal behaving nicely in markdown
-- [ ] Jump to linked markdown header
+- [x] Jump to linked markdown header
 - [ ] Add zz after ( or )
 - [ ] Set up error format and mappings for dotnet test
 - [ ] Force LSP to reload all open buffers (e.g. what I expect with `e!`)
