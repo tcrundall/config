@@ -110,3 +110,56 @@ Trigger test, then send a netcoredbg command with appropriate ID
 csharp_ls seems more stable, but only works for .NET 8
 when finally viable, can also use extended lsp just like omnisharp:
 [csharpls-extended](https://github.com/Decodetalkers/csharpls-extended-lsp.nvim)
+
+## Getting links to work
+
+Go to [waiting for](#waiting-for)
+- [tflint](https://github.com/terraform-linters/tflint#installation)
+
+- [dotnet-sdk](https://dotnet.microsoft.com/download) (see [global.json](https://dev.azure.com/cmd-sw/Discoverer/_git/chimerys?path=%2Fglobal.json&_a=contents) for required version)
+
+* In the main directory, log in to the nuget feed with `dotnet restore --interactive`. If it fails, you might need to (re-)install the [Azure Artifacts credential provider](https://dev.azure.com/cmd-sw/Discoverer/_artifacts/feed/discoverer-nuget/connect) and/or run `dotnet tool restore`.
+
+
+### Handling edge cases
+
+#### Case 1
+Inside square brackets
+             ↓
+...(...)...[.█.](...)....
+
+#### Case 2
+Inside round brackets
+                  ↓
+...(...)...[...](l█ink)....)
+
+#### Case 3
+Before square brackets
+         ↓
+...(...).█.[...](mylink)....
+
+#### Case 4
+Between two links
+           ↓
+[...](...).█.[...](...)....
+
+#### Case 5
+Before unrelated round brackets
+ ↓
+.█.(...)...[...](...)....
+
+#### Case 6
+Inside unrelated round brackets
+              ↓
+(.[...](...)..█.)
+
+
+
+1. Find ")" on the right closest to cursor
+2. Find closest "(" to the left of ")"
+3. If "(" is not preceeded by "]", then start again
+
+- (re-)ins [link](https://dev.azure.com/cmd-sw/Discoverer/) 
+- asdf (sdf) asdf
+- asdfas ) as;fdlksaj
+(see [global.json](https://dev.azure.com/cmd-sw/Discoverer/2) for required version) ns [link](https://dev.azure.com/cmd-sw/Discoverer/3) )
