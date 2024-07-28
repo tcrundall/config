@@ -82,8 +82,59 @@ local function follow_link()
   end
 end
 
-vim.api.nvim_create_user_command("FollowLink", function()
-  follow_link()
+-- Identify line
+-- find a - [ ], if found, replace with - [x]
+-- find a -, if found, replace with - [ ]
+-- find a - [x], if found, replace with -
+
+local function toggle_checkbox()
+  local cursor = vim.api.nvim_win_get_cursor(0)
+  local row_ix = cursor[1]
+  print("At row ", row_ix)
+  local line = vim.api.nvim_get_current_line()
+  local checked_box_pattern = "- %[x%] "
+  local checked_box = "- [x] "
+  local unchecked_box_pattern = "- %[ %] "
+  local unchecked_box = "- [ ] "
+  local no_box = "- "
+  print("toggling")
+
+  print("Checking line: '", line, "' for ", checked_box_pattern)
+  local start_ix, end_ix = line:find(checked_box_pattern)
+  print("Start_ix: ", start_ix, "  End_ix: ", end_ix)
+  if start_ix ~= nil and end_ix ~= nil then
+    print("Found " .. checked_box_pattern)
+    line = line:sub(1, start_ix - 1) .. no_box .. line:sub(end_ix + 1)
+    print("new line: " .. line)
+    vim.api.nvim_buf_set_lines(0, row_ix - 1, row_ix, false, { line })
+    return
+  end
+
+  print("Checking line: '", line, "' for ", unchecked_box_pattern)
+  start_ix, end_ix = line:find(unchecked_box_pattern)
+  print("Start_ix: ", start_ix, "  End_ix: ", end_ix)
+  if start_ix ~= nil and end_ix ~= nil then
+    print("Found " .. unchecked_box_pattern)
+    line = line:sub(1, start_ix - 1) .. checked_box .. line:sub(end_ix + 1)
+    print("new line: " .. line)
+    vim.api.nvim_buf_set_lines(0, row_ix - 1, row_ix, false, { line })
+    return
+  end
+
+  print("Checking line: '", line, "' for ", no_box)
+  start_ix, end_ix = line:find(no_box)
+  print("Start_ix: ", start_ix, "  End_ix: ", end_ix)
+  if start_ix ~= nil and end_ix ~= nil then
+    print("Found " .. no_box)
+    line = line:sub(1, start_ix - 1) .. unchecked_box .. line:sub(end_ix + 1)
+    print("new line: " .. line)
+    vim.api.nvim_buf_set_lines(0, row_ix - 1, row_ix, false, { line })
+  end
+end
+
+vim.api.nvim_create_user_command("ToggleCheckbox", function()
+  toggle_checkbox()
 end, {})
 
-vim.api.nvim_set_keymap("n", "gl", "<cmd>FollowLink<cr>", {})
+vim.api.nvim_set_keymap("n", "<c-s-x>", "<cmd>ToggleCheckbox<cr>", {})
+vim.api.nvim_set_keymap("n", "<c-x>", "<cmd>ToggleCheckbox<cr>", {})
