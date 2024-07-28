@@ -28,8 +28,6 @@ local function jump_to_file(address)
   local openable_extensions = { "pdf", "png", "jpg", "jpeg", "xlsx", "doc", "docx" }
   for _, extension in pairs(openable_extensions) do
     if file_extension == extension then
-      -- vim.fn.execute("!open " .. address, "silent")
-      print("Opening cause extension found: ", file_extension)
       address = address:gsub(" ", "\\ ")
       vim.fn.execute("!open " .. address)
       return
@@ -57,13 +55,10 @@ local function extract_address_from_string(str, search_start)
   local open_paren_ix, close_paren_ix = nil, nil
 
   while true do
-    print("Starting search at ", search_start)
     close_paren_ix = str:find("%)", search_start)
     if close_paren_ix == nil then
       print("Could not find ')' after cursor position")
       return
-    else
-      print("Closing paren ix: ", close_paren_ix)
     end
     open_paren_ix = FindLast(str, "%(", close_paren_ix)
 
@@ -76,7 +71,6 @@ local function extract_address_from_string(str, search_start)
       break
     else
       search_start = close_paren_ix + 1
-      print("Searching again from ", search_start)
     end
   end
   return str:sub(open_paren_ix + 1, close_paren_ix - 1)
@@ -91,7 +85,6 @@ local function follow_link()
   if address == nil then
     return
   end
-  print("address: ", address)
 
   if address:sub(1, 1) == "#" then
     jump_to_markdown_header(address)

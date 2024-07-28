@@ -29,7 +29,6 @@ function FindLast(s, pattern, end_pos)
     if ix == nil or ix > end_pos then
       break
     end
-    print("Found " .. pattern .. " at " .. ix)
     position = ix
     ix = ix + 1
   end
