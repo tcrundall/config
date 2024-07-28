@@ -49,6 +49,10 @@ vim.keymap.set(
 -- relative file, absolute file (from "cwd"), url and markdown heading
 vim.api.nvim_set_keymap("n", "gl", "<cmd>FollowLink<cr>", { desc = "[G]o to [L]ink" })
 
+-- -- Toggle checkbox
+vim.api.nvim_set_keymap("n", "<a-x>", "<cmd>ToggleCheckbox<cr>", {})
+vim.api.nvim_set_keymap("i", "<a-x>", "<cmd>ToggleCheckbox<cr>", {})
+
 -- Shift highlighed lines up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
