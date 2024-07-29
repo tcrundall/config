@@ -10,11 +10,6 @@ local function jump_to_url(link)
   vim.fn.execute("!google-chrome " .. link, "silent")
 end
 
-local function get_file_extension(path)
-  local pattern = ".*%.(%a*)$"
-  return path:match(pattern)
-end
-
 local function jump_to_file(address)
   local relative_link = address:sub(1, 1) == "."
 
@@ -24,12 +19,12 @@ local function jump_to_file(address)
   end
 
   -- openable files
-  local file_extension = get_file_extension(address)
   local openable_extensions = { "pdf", "png", "jpg", "jpeg", "xlsx", "doc", "docx" }
   for _, extension in pairs(openable_extensions) do
-    if file_extension == extension then
+    if vim.endswith(address, extension) then
       address = address:gsub(" ", "\\ ")
-      vim.fn.execute("!open " .. address)
+      vim.ui.open(address)
+      -- vim.fn.execute("!open " .. address)
       return
     end
   end
@@ -86,9 +81,9 @@ local function follow_link()
     return
   end
 
-  if address:sub(1, 1) == "#" then
+  if vim.startswith(address, "#") then
     jump_to_markdown_header(address)
-  elseif address:sub(1, 4) == "http" then
+  elseif vim.startswith(address, "http") then
     jump_to_url(address)
   else
     jump_to_file(address)
