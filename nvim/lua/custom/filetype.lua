@@ -33,3 +33,27 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
     vim.keymap.set("n", "<leader><leader>e", "<cmd>cf errors.out<cr>", { desc = "Open [E]rrors in quickfix list" })
   end,
 })
+
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+  pattern = "test*.lua",
+  callback = function()
+    vim.keymap.set(
+      "n",
+      "<leader><leader>t",
+      "<cmd>w<cr><cmd>lua MiniTest.run()<cr>",
+      { desc = "[T]est project with mini test" }
+    )
+    vim.keymap.set(
+      "n",
+      "<leader><leader>f",
+      "<cmd>w<cr><cmd>lua MiniTest.run_file()<cr>",
+      { desc = "Test [F]ile with mini test" }
+    )
+    vim.keymap.set(
+      "n",
+      "<leader><leader>c",
+      "<cmd>w<cr><cmd>lua MiniTest.run_at_location()<cr>",
+      { desc = "Test [C]ursor location with mini test" }
+    )
+  end,
+})
