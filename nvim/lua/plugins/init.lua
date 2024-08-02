@@ -26,6 +26,16 @@ return {
     end,
   },
 
+  -- custom plugin
+  {
+    "tcrundall/gtd.nvim",
+    opts = {},
+  },
+  -- {
+  --   dir = "~/Repos/gtd.nvim",
+  --   opts = {},
+  -- },
+
   -- Unfortunately isn't great at syntax highlighting... maybe I can turn it off somehow?
   -- 'ixru/nvim-markdown', -- pretty markdown with link concealment
 
