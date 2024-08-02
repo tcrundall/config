@@ -165,5 +165,6 @@ return {
     },
   },
 
-  { "Chaitanyabsprip/present.nvim" },
+  -- issues on install?
+  -- { "Chaitanyabsprip/present.nvim" },
 }
