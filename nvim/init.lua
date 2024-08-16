@@ -17,5 +17,8 @@ require("setup-lazy")
 require("custom")
 require("snippets")
 
+-- Add current directory to runtime path, to simplify developing e.g. plugins
+vim.cmd([[let &rtp.=','.getcwd()]])
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
