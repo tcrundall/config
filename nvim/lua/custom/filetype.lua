@@ -55,5 +55,11 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
       "<cmd>w<cr><cmd>lua MiniTest.run_at_location()<cr>",
       { desc = "Test [C]ursor location with mini test" }
     )
+    vim.keymap.set(
+      "n",
+      "<leader><leader>e",
+      "<cmd>w<cr><cmd>lua MiniTest.run_at_location()<cr>",
+      { desc = "T[E]st cursor location with mini test" }
+    )
   end,
 })
