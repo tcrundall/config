@@ -40,22 +40,18 @@ return { -- Highlight, edit, and navigate code
       },
     })
 
-    vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+    vim.api.nvim_create_autocmd({ "BufNew" }, {
       callback = function()
         -- :help vim.v, v:foldlevel, foldtext
         -- https://vi.stackexchange.com/questions/43847/how-to-set-the-value-of-foldexpr-to-be-a-lua-function
         _G.get_fold_text = function()
           local line_length = 60
           local n_folded_lines = vim.v.foldend - vim.v.foldstart + 1
-          local fold_title = vim.fn.getline(vim.v.foldstart)
-            .. string.rep(" ", line_length)
+          local fold_title = vim.fn.getline(vim.v.foldstart) .. string.rep(" ", line_length)
           local folded_lines_tag = string.format("  + %s lines", n_folded_lines)
           return (
-            string.sub(
-              fold_title,
-              1,
-              line_length - string.len(folded_lines_tag)
-            ) .. folded_lines_tag
+            string.sub(fold_title, 1, line_length - string.len(folded_lines_tag))
+            .. folded_lines_tag
           )
         end
 
