@@ -8,7 +8,6 @@
   "conform.nvim": { "branch": "master", "commit": "4e97712607bfdcadc097823339599e5bf05f97f9" },
   "fidget.nvim": { "branch": "main", "commit": "d855eed8a06531a7e8fd0684889b2943f373c469" },
   "gitsigns.nvim": { "branch": "main", "commit": "562dc47189ad3c8696dbf460d38603a74d544849" },
-  "gtd.nvim": { "branch": "main", "commit": "a99d70aa478658bc9e68c70e2f644aa92d7440c6" },
   "harpoon": { "branch": "master", "commit": "e76cb03c420bb74a5900a5b3e1dde776156af45f" },
   "indent-blankline.nvim": { "branch": "master", "commit": "dddb5d21811c319eb6e51a993d8fb44b193aae3f" },
   "lazy.nvim": { "branch": "main", "commit": "077102c5bfc578693f12377846d427f49bc50076" },
