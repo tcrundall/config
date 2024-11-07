@@ -5,6 +5,9 @@ if not vim.loop.fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
+-- include custom plugin
+vim.opt.rtp:prepend("/home/crundallt/Repos/gtd.nvim/")
+
 -- [[ Configure and install plugins ]]
 local opts = {
   change_detection = {

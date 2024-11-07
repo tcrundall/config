@@ -13,6 +13,10 @@ vim.g.have_nerd_font = true
 -- Ensure initial fold level is at max
 vim.opt.foldlevel = 99
 
+-- note, this probably breaks telescope searching
+-- TODO: address this in treesitter.lua plugin
+vim.opt.foldmethod = "expr"
+
 -- Concel links in e.g. markdown
 vim.opt.conceallevel = 3
 

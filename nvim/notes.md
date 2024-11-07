@@ -10,6 +10,8 @@ Go to [waiting for](#waiting-for)
 
 ## Wishlist
 
+- [ ] Fix fold method to work with diff
+- [ ] link follower expands `~` in filenames
 - [ ] Smart imports for go
 - [ ] Extend link follower to follow file names
 - [ ] Get conceal behaving nicely in markdown
@@ -98,6 +100,12 @@ netcoredbg -ex "break UnitTests/Resource/ResourceConfigTest.cs:30" --attach 2098
 ```
 2 commands
 Trigger test, then send a netcoredbg command with appropriate ID
+
+### Generate TOC for markdown file
+
+Wy$i[A]o()kpVuV:s/\(\a\)\@!.*/-/g0i#kJxj0
+
+Still needs some work replacing contiguous sets of non-alphabetic characters within title with a single "-"
 
 ## Process
 

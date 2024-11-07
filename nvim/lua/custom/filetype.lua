@@ -22,7 +22,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
     --
     -- %-G%.%#
     --   ignore any other line not matched by earlier messages
-    vim.o.errorformat = "%-ABuild FAILED.,%C%.%#,%f(%l\\,%c): %t%.%# CS%n:%m,%-G%.%#"
+    vim.o.errorformat = "%-ABuild FAILED.,%C%.%#,%f(%l\\,%c): %t%.%# %.%#%n:%m,%-G%.%#"
 
     vim.keymap.set(
       "n",

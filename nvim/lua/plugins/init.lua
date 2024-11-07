@@ -27,14 +27,14 @@ return {
   },
 
   -- custom plugin
-  {
-    "tcrundall/gtd.nvim",
-    opts = {},
-  },
   -- {
-  --   dir = "~/Repos/gtd.nvim",
+  --   "tcrundall/gtd.nvim",
   --   opts = {},
   -- },
+  {
+    dir = "~/Repos/gtd.nvim",
+    opts = {},
+  },
 
   -- Unfortunately isn't great at syntax highlighting... maybe I can turn it off somehow?
   -- 'ixru/nvim-markdown', -- pretty markdown with link concealment
@@ -91,7 +91,7 @@ return {
       formatters_by_ft = {
         lua = { "stylua" },
         -- Conform can also run multiple formatters sequentially
-        python = { "black", "isort" },
+        python = { "isort" },
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         go = { "goimports", "gofmt" },
@@ -100,9 +100,9 @@ return {
         -- cs = { "csharpier" },
       },
       formatters = {
-        black = {
-          prepend_args = { "--line-length=120" },
-        },
+        -- black = {
+        --   prepend_args = { "--line-length=120" },
+        -- },
         -- flake is not a built in formatter. I'll need to define my own
         -- flake8 = {
         --   prepend_args = {
