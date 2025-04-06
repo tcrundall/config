@@ -30,7 +30,12 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
       "<cmd>!dotnet build | tee errors.out<cr>",
       { desc = "[B]uild current csharp project" }
     )
-    vim.keymap.set("n", "<leader><leader>e", "<cmd>cf errors.out<cr>", { desc = "Open [E]rrors in quickfix list" })
+    vim.keymap.set(
+      "n",
+      "<leader><leader>e",
+      "<cmd>cf errors.out<cr>",
+      { desc = "Open [E]rrors in quickfix list" }
+    )
   end,
 })
 
@@ -63,3 +68,27 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
     )
   end,
 })
+
+-- vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+--   pattern = "*.zig",
+--   callback = function()
+--     vim.keymap.set(
+--       "n",
+--       "<leader><leader>x",
+--       "<cmd>w<cr><cmd>!zig run %<cr>",
+--       { desc = "e[X]ecute current zig file" }
+--     )
+--     vim.keymap.set(
+--       "n",
+--       "<leader><leader>t",
+--       "<cmd>w<cr><cmd>!zig test %<cr>",
+--       { desc = "[T]est current zig file" }
+--     )
+--     vim.keymap.set(
+--       "n",
+--       "<leader><leader>e",
+--       "<cmd>w<cr><cmd>!zig build 2> errors.out<cr><cmd>cfile errors.out<cr>",
+--       { desc = "[T]est current zig file" }
+--     )
+--   end,
+-- })

@@ -19,9 +19,10 @@ local function jump_to_file(address)
   end
 
   -- openable files
-  local openable_extensions = { "pdf", "png", "jpg", "jpeg", "xlsx", "doc", "docx" }
+  local openable_extensions = { "pdf", "png", "jpg", "jpeg", "xlsx", "doc", "docx", "epub" }
   for _, extension in pairs(openable_extensions) do
     if vim.endswith(address, extension) then
+      address = vim.fn.expand(address) -- expand "~"
       address = address:gsub(" ", "\\ ")
       vim.ui.open(address)
       -- vim.fn.execute("!open " .. address)

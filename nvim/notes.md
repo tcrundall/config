@@ -10,6 +10,8 @@ Go to [waiting for](#waiting-for)
 
 ## Wishlist
 
+- [ ] Establish why "write" (in zig) executes my .bash_profile, and fix this
+
 - [ ] Smart imports for go
 - [ ] Extend link follower to follow file names
 - [ ] Get conceal behaving nicely in markdown
