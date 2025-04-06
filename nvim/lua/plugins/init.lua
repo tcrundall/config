@@ -9,7 +9,7 @@
 --    require('Comment').setup({})
 return {
   -- { dir = "~/Coding/nvim/stackmap.nvim/", opts = { key = "value" } },
-  "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically TODO: Understand what this does
+  "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
 
   {
     "shortcuts/no-neck-pain.nvim", -- center current buffer
@@ -33,6 +33,10 @@ return {
   -- },
   {
     dir = "~/Repos/gtd.nvim",
+    opts = {},
+  },
+  {
+    dir = "~/Repos/codepilot.nvim",
     opts = {},
   },
 
@@ -91,7 +95,7 @@ return {
       formatters_by_ft = {
         lua = { "stylua" },
         -- Conform can also run multiple formatters sequentially
-        python = { "isort" },
+        -- python = { "isort" },
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         go = { "goimports", "gofmt" },
@@ -129,7 +133,7 @@ return {
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       require("catppuccin").setup({
-        transparent_background = true,
+        transparent_background = false,
       })
       -- vim.cmd.colorscheme("catppuccin-latte")
     end,
@@ -141,8 +145,8 @@ return {
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       local opts = {
-        transparent = true,
-        -- transparent = false,
+        -- transparent = true,
+        transparent = false,
         styles = {
           -- sidebars = "none",
         },
@@ -163,6 +167,15 @@ return {
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
     },
+  },
+
+  {
+    "dustinblackman/oatmeal.nvim",
+    cmd = { "Oatmeal" },
+    keys = {
+      { "<leader>om", mode = "n", desc = "Start Oatmeal session" },
+    },
+    opts = {},
   },
 
   -- issues on install?

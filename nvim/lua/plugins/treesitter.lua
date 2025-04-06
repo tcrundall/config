@@ -45,7 +45,7 @@ return { -- Highlight, edit, and navigate code
         -- :help vim.v, v:foldlevel, foldtext
         -- https://vi.stackexchange.com/questions/43847/how-to-set-the-value-of-foldexpr-to-be-a-lua-function
         _G.get_fold_text = function()
-          local line_length = 60
+          local line_length = 100
           local n_folded_lines = vim.v.foldend - vim.v.foldstart + 1
           local fold_title = vim.fn.getline(vim.v.foldstart) .. string.rep(" ", line_length)
           local folded_lines_tag = string.format("  + %s lines", n_folded_lines)

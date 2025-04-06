@@ -14,6 +14,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 require("setup-lazy")
+
 require("custom")
 require("snippets")
 

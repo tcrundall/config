@@ -3,14 +3,18 @@ local function close_any_floating_window()
   local curr_win = vim.api.nvim_get_current_win()
   if vim.api.nvim_win_get_config(curr_win).relative ~= "" then
     vim.api.nvim_win_close(curr_win, true)
-    vim.print("CLosed flaoting window")
+    -- vim.print("Closed floating window")
   else
-    vim.print("Not in floating window")
+    -- vim.print("Not in floating window")
   end
 end
 
 local function jump_to_markdown_header(link)
   local markdown_header = link:sub(2)
+
+  -- remove proprietry "markdown-header-" prefix used by atlassian/bitbucket links
+  local markdown_prefix = "markdown%-header%-"
+  markdown_header = markdown_header:gsub(markdown_prefix, "")
 
   -- replace "-" with anything, and allow for anything between digits (as the header 1.2 becomes 12 in links)
   local search_phrase = "^#\\+\\s*" .. markdown_header:gsub("-", ".*"):gsub("(%d)", "%1.*")
@@ -30,8 +34,8 @@ local function jump_to_file(address)
   if line_info_ix then
     line_info = address.sub(address, line_info_ix)
     address = address.sub(address, 1, line_info_ix - 1)
-    vim.print(address)
-    vim.print(line_info)
+    -- vim.print(address)
+    -- vim.print(line_info)
   end
 
   -- try if relative, with or without leader '.'
@@ -41,7 +45,7 @@ local function jump_to_file(address)
     address = relative_address
   end
 
-  print("Got address: " .. address)
+  -- print("Got address: " .. address)
 
   if vim.startswith(address, "file:///") then
     address = vim.fn.substitute(address, "file:///", "/", "")
@@ -67,12 +71,15 @@ local function jump_to_file(address)
   print("File does exist: " .. address)
 
   vim.cmd("e " .. address)
-  if vim.startswith(line_info, "#L") then
-    local line_number_as_str = line_info:sub(3)
-    vim.api.nvim_input(line_number_as_str .. "gg")
-  else
-    -- attempt to treat as markdown header
-    jump_to_markdown_header(line_info)
+  if line_info ~= "" then
+    print("Jumping to line info: " .. line_info)
+    if vim.startswith(line_info, "#L") then
+      local line_number_as_str = line_info:sub(3)
+      vim.api.nvim_input(line_number_as_str .. "gg")
+    else
+      -- attempt to treat as markdown header
+      jump_to_markdown_header(line_info)
+    end
   end
 end
 
@@ -111,7 +118,7 @@ end
 
 local function follow_link()
   local current_line = vim.api.nvim_get_current_line()
-  vim.print("Got: " .. current_line)
+  -- vim.print("Got: " .. current_line)
 
   -- Get address from [some text](address)
   -- Note columns are 0 indexed, but strings are 1 indexed

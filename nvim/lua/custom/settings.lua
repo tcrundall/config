@@ -73,5 +73,8 @@ vim.opt.scrolloff = 8
 -- Ensure files are at max fold level upon opening?
 vim.opt.foldlevel = 100000
 
--- Set defautl textwidth
+-- Set default textwidth
 vim.opt.textwidth = 100
+
+-- Miscellaneous settings
+vim.o.wrap = false

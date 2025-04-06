@@ -65,39 +65,39 @@ function UnsetBackground()
 end
 
 function DarkTheme()
-  require("tokyonight").setup({ transparent = true })
+  -- require("tokyonight").setup({ transparent = true })
   vim.cmd.colorscheme("tokyonight-night")
   -- SetBackground()
 end
 
 function DarkThemeOpaque()
-  require("tokyonight").setup({ transparent = false })
+  -- require("tokyonight").setup({ transparent = false })
   vim.cmd.colorscheme("tokyonight-night")
   -- vim.cmd.colorscheme("rose-pine-main")
 end
 
 function LightTheme()
   -- vim.cmd("colorscheme tokyonight-day")
-  require("catppuccin").setup({ transparent_background = true })
+  -- require("catppuccin").setup({ transparent_background = true })
   vim.cmd("colorscheme catppuccin-latte")
   -- UnsetBackground()
 end
 
 function LightThemeOpaque()
   -- vim.cmd("colorscheme tokyonight-day")
-  require("catppuccin").setup({ transparent_background = false })
+  -- require("catppuccin").setup({ transparent_background = false })
   vim.cmd("colorscheme catppuccin-latte")
   -- UnsetBackground()
 end
 
 -- [TH]eme [D]ark
-vim.keymap.set("n", "<leader>thd", DarkTheme)
+-- vim.keymap.set("n", "<leader>thd", DarkTheme)
 
 -- [TH]eme [O]paque [D]ark
-vim.keymap.set("n", "<leader>thod", DarkThemeOpaque)
+vim.keymap.set("n", "<leader>thd", DarkThemeOpaque)
 
 -- [TH]eme [L]ight
-vim.keymap.set("n", "<leader>thl", LightTheme)
+-- vim.keymap.set("n", "<leader>thl", LightTheme)
 
 -- [TH]eme [O]paque [L]ight
-vim.keymap.set("n", "<leader>thol", LightThemeOpaque)
+vim.keymap.set("n", "<leader>thl", LightThemeOpaque)

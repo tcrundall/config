@@ -59,7 +59,7 @@ return {
     vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" })
     vim.keymap.set("n", "<leader>B", function()
       dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
-    end, { desc = "Debug: Set Breakpoint" })
+    end, { desc = "Debug: Set Conditional Breakpoint" })
     ---@diagnostic enable: undefined-field
 
     -- Dap UI setup
@@ -282,6 +282,7 @@ return {
       local tail = string.sub(cwd, final_dir_index)
       -- TODO: Have this be dynamic between .NET versions (6.0 and 8.0)
       local dll_file_full_path = cwd .. "/bin/Debug/net8.0/" .. tail .. ".dll"
+      print("Retrieved dll ", dll_file_full_path)
       return dll_file_full_path
     end
 
@@ -330,6 +331,7 @@ return {
         name = "attach dynamic - netcoredbg",
         request = "attach",
         processId = function()
+          print("Attaching to ", debug_process_id)
           return debug_process_id
         end,
         program = get_test_dll,

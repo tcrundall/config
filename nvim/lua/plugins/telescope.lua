@@ -82,8 +82,29 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set("n", "<leader>se", builtin.spell_suggest, { desc = "[S]earch sp[E]ll suggestions" })
 
     vim.keymap.set("n", "<leader>sF", function()
-      builtin.find_files({ hidden = true })
+      -- builtin.find_files({ hidden = true, no_ignore = true, no_ignore_parent = true })
+      builtin.find_files({ hidden = true, no_ignore_parent = true })
     end, { desc = "[S]earch hidden [F]iles" })
+    vim.keymap.set("n", "<leader>sG", function()
+      -- builtin.find_files({ hidden = true, no_ignore = true, no_ignore_parent = true })
+      builtin.live_grep({ glob_pattern = ".*" })
+    end, { desc = "[S]earch [G]rep in hidden files" })
+
+    vim.keymap.set("n", "<leader>ed", function()
+      builtin.find_files({ cwd = "~/Documents/" })
+    end)
+
+    vim.keymap.set("n", "<leader>ec", function()
+      builtin.find_files({ cwd = "~/Repos/config/nvim/" })
+    end)
+
+    vim.keymap.set("n", "<leader>en", function()
+      builtin.find_files({ cwd = "~/Repos/notes/" })
+    end)
+
+    vim.keymap.set("n", "<leader>ep", function()
+      builtin.find_files({ cwd = vim.fn.stdpath("data") })
+    end)
 
     -- testngelephantelephnt
     -- Slightly advanced example of overriding default behavior and theme

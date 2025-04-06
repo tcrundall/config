@@ -34,3 +34,16 @@ end
 vim.api.nvim_create_user_command("ToggleCheckbox", function()
   toggle_checkbox()
 end, {})
+
+vim.api.nvim_create_user_command("MarkdownViewer", function()
+  local filename = vim.fn.expand("%:t")
+  local filedir = vim.fn.expand("%:h")
+  local temp_html_file_path = ("%s/temp-%s.html"):format(filedir, filename)
+  print(temp_html_file_path)
+
+  local create_command = ("!pandoc %% > %s"):format(temp_html_file_path)
+  vim.fn.execute(create_command)
+
+  local open_command = ("!open %s"):format(temp_html_file_path)
+  vim.fn.execute(open_command)
+end, {})

@@ -68,7 +68,7 @@ return { -- LSP Configuration & Plugins
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
-    csharp_lsp,
+    -- csharp_lsp,
 
     -- Useful status updates for LSP.
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -167,11 +167,36 @@ return { -- LSP Configuration & Plugins
     --  - settings (table): Override the default settings passed when initializing the server.
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
     local servers = {
+      robotframework_ls = {
+        pythonpath = "/home/crundallt/Repos/chimerys/local-platform/ardia-server-setup/.venv/lib/",
+        python = {
+          executable = "/home/crundallt/Repos/chimerys/local-platform/ardia-server-setup/.venv/bin/python",
+        },
+      },
       bashls = {},
       terraformls = {},
-      -- clangd = {},
+      clangd = {
+        -- cmd = { "clangd", "--config-file=.clangd" },
+        -- root_dir = function(fname)
+        --   return vim.loop.cwd()
+        -- end,
+        -- settings = {
+        --   clangd = {
+        --     compilationDatabasePath = "build/compile_commands.json",
+        --   },
+        -- },
+      },
       gopls = {},
-      pyright = {},
+      pyright = {
+        openFilesOnly = false,
+        analysis = {
+          autoSearchPaths = true,
+          useLibraryCodeForTypes = true,
+          diagnosticMode = "workspace",
+          exclude = { ".venv" },
+        },
+      },
+      -- r_language_server = {},
       zls = {},
       -- rust_analyzer = {},
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -179,8 +204,8 @@ return { -- LSP Configuration & Plugins
       -- Some languages (like typescript) have entire language plugins that can be useful:
       --    https://github.com/pmizio/typescript-tools.nvim
       --
-      -- But for many setups, the LSP (`tsserver`) will work just fine
-      tsserver = {},
+      -- -- But for many setups, the LSP (`tsserver`) will work just fine
+      -- tsserver = {},
 
       -- csharp-ls only available for .NET >8.0
       -- csharp_ls = {
@@ -192,25 +217,25 @@ return { -- LSP Configuration & Plugins
       -- See https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/omnisharp.lua
       -- for available options
 
-      azure_pipelines_ls = {
-        root_dir = require("lspconfig.util").find_git_ancestor,
-        settings = {
-          yaml = {
-            schemas = {
-              -- [vim.fn.expand '~' .. '/.config/azure_piplines_lsp/service-schema.json'] = '*.yaml',
-              -- ['service-schema.json'] = {
-              --   '/azure-pipeline*.y*l',
-              --   '/*.azure*',
-              --   'Azure-Pipelines/**/*.y*l',
-              --   'Pipelines/*.y*l',
-              --   'templates/*.y*l',
-              --   '**/*.y*l',
-              --   '*.yaml',
-              -- },
-            },
-          },
-        },
-      },
+      -- azure_pipelines_ls = {
+      --   root_dir = require("lspconfig.util").find_git_ancestor,
+      --   settings = {
+      --     yaml = {
+      --       schemas = {
+      --         -- [vim.fn.expand '~' .. '/.config/azure_piplines_lsp/service-schema.json'] = '*.yaml',
+      --         -- ['service-schema.json'] = {
+      --         --   '/azure-pipeline*.y*l',
+      --         --   '/*.azure*',
+      --         --   'Azure-Pipelines/**/*.y*l',
+      --         --   'Pipelines/*.y*l',
+      --         --   'templates/*.y*l',
+      --         --   '**/*.y*l',
+      --         --   '*.yaml',
+      --         -- },
+      --       },
+      --     },
+      --   },
+      -- },
 
       -- yamlls = {
       --   settings = {
@@ -253,7 +278,7 @@ return { -- LSP Configuration & Plugins
       },
     }
 
-    vim.tbl_extend("error", servers, csharp_lsp_opts)
+    -- vim.tbl_extend("error", servers, csharp_lsp_opts)
 
     -- Ensure the servers and tools above are installed
     --  To check the current status of installed tools and/or manually install

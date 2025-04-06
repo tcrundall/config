@@ -52,6 +52,8 @@ vim.api.nvim_set_keymap("n", "gl", "<cmd>FollowLink<cr>", { desc = "[G]o to [L]i
 -- -- Toggle checkbox
 vim.api.nvim_set_keymap("n", "<a-x>", "<cmd>ToggleCheckbox<cr>", {})
 vim.api.nvim_set_keymap("i", "<a-x>", "<cmd>ToggleCheckbox<cr>", {})
+-- vim.api.nvim_set_keymap("n", "<leader>x", "<cmd>ToggleCheckbox<cr>", {})
+-- vim.api.nvim_set_keymap("i", "<leader>x", "<cmd>ToggleCheckbox<cr>", {})
 
 -- Shift highlighed lines up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -69,31 +71,6 @@ vim.keymap.set("n", "<leader>cp", ":cprev<cr>", { desc = "[C]see [P]revious" })
 
 -- Dev helpers
 
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-  pattern = "*.lua",
-  callback = function()
-    vim.keymap.set("n", "<leader><leader>x", "<cmd>w<cr><cmd>source %<cr>", { desc = "e[X]ecute current lua file" })
-  end,
-})
-
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-  pattern = "*.zig",
-  callback = function()
-    vim.keymap.set("n", "<leader><leader>x", "<cmd>w<cr><cmd>!zig run %<cr>", { desc = "e[X]ecute current zig file" })
-    vim.keymap.set("n", "<leader><leader>t", "<cmd>w<cr><cmd>!zig test %<cr>", { desc = "[T]est current zig file" })
-  end,
-})
-
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-  pattern = "*.go",
-  callback = function()
-    vim.o.tabstop = 4
-    vim.o.shiftwidth = 4
-    vim.keymap.set("n", "<leader><leader>t", "<cmd>w<cr><cmd>!go test %:.<cr>", { desc = "[T]est current go file" })
-    vim.keymap.set("n", "<leader><leader>T", "<cmd>w<cr><cmd>!go test ./...<cr>", { desc = "[T]est entire go project" })
-  end,
-})
-
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -107,3 +84,24 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank()
   end,
 })
+
+-- center text when jumping through search
+vim.keymap.set("n", "n", "nzz", { desc = "Center text when jumping to next result" })
+vim.keymap.set("n", "N", "Nzz", { desc = "Center text when jumping to prev result" })
+
+vim.keymap.set("n", "(", "(zz", { desc = "Center text when jumping to next commit" })
+vim.keymap.set("n", ")", ")zz", { desc = "Center text when jumping to prev commit" })
+
+vim.keymap.set("n", "<leader>sc", "z=1<cr><cr>", { desc = "[S]pell [C]heck: replace with first suggestion 2" })
+
+-- jump through quick fix list
+vim.keymap.set("n", "<M-i>", "<cmd>cprev<cr>zz", { desc = "Go to prev quick fix entry" })
+vim.keymap.set("n", "<M-u>", "<cmd>cnext<cr>zz", { desc = "Go to next quick fix entry" })
+
+-- inject date
+vim.keymap.set(
+  "n",
+  "<leader>dd",
+  "<cmd>r !date -I<cr>kJo",
+  { desc = "Insert date at end of line with format YYYY-MM-DD" }
+)

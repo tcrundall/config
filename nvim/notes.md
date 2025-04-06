@@ -10,11 +10,17 @@ Go to [waiting for](#waiting-for)
 
 ## Wishlist
 
-- [ ] Fix fold method to work with diff
-- [ ] link follower expands `~` in filenames
+- [ ] pretty yaml [injection for gotmpl](https://github.com/ngalaiko/tree-sitter-go-template)
+- [ ] csharpls decompile and go-to dependencies
+- [ ] Implement [spell check](https://www.reddit.com/r/neovim/comments/1fcidod/cspell_for_neovim/)
+- [x] Teach `gl` (link follower) to handle `file-path#markdown-heading` syntax
+- [x] Teach `gl` (link follower) to handle `file:///...` syntax
+- [x] Execute pyright and put issues into quickfix list
+- [x] Fix fold method to work with diff
+- [x] link follower expands `~` in filenames
 - [ ] Smart imports for go
-- [ ] Extend link follower to follow file names
-- [ ] Get conceal behaving nicely in markdown
+- [x] Extend link follower to follow file names
+- [x] Get conceal behaving nicely in markdown
 - [x] Jump to linked markdown header
 - [ ] Add zz after ( or )
 - [ ] Set up error format and mappings for dotnet test
