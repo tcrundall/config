@@ -68,13 +68,22 @@ local getFileNameWithAdoLink = function(opts)
   return filenameWithAdoLink
 end
 
-openApiViewer = function(opts)
+local openApiViewer = function(opts)
   local filename = vim.fn.expand("%:t") -- 't' = only file name
   local extension = vim.fn.expand("%:e") -- 'e' = only extension
   local filenameWithoutExtension = filename:gsub("." .. extension, "")
-  vim.fn.execute("!echo %")
-  -- vim.fn.execute("!openapi-viewer % &")
-  -- vim.fn.execute("!open http://localhost:3000/" .. filenameWithoutExtension .. " &")
+  vim.fn.execute("!openapi-viewer % &")
+  vim.fn.execute("!open http://localhost:3000/" .. filenameWithoutExtension .. " &")
+end
+
+local mermaidViewer = function(opts)
+  print("!mmdc --input % -o tmp.svg")
+  local filename = vim.fn.expand("%:t") -- 't' = only file name
+  local extension = vim.fn.expand("%:e") -- 'e' = only extension
+  local filenameWithoutExtension = filename:gsub("." .. extension, "")
+  local output_file = filenameWithoutExtension .. ".svg"
+  vim.fn.execute("!mmdc --input % -o " .. output_file)
+  vim.fn.execute("!open " .. output_file)
 end
 
 vim.api.nvim_create_user_command("LinkToGit", function(opts)
@@ -95,6 +104,10 @@ end, { range = true, nargs = "?" })
 
 vim.api.nvim_create_user_command("OpenApiViewer", function(opts)
   openApiViewer(opts)
+end, {})
+
+vim.api.nvim_create_user_command("MermaidViewFile", function(opts)
+  mermaidViewer(opts)
 end, {})
 
 vim.api.nvim_create_user_command("YamlToJson", "%!yq -o=json", {})
