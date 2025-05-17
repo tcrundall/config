@@ -106,16 +106,37 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
     vim.keymap.set("n", "<leader><leader>t", "<cmd>w<cr><cmd>!zig test %<cr>", { desc = "[T]est current zig file" })
     vim.keymap.set(
       "n",
+      "<leader><leader>T",
+      "<cmd>w<cr><cmd>!zig test % 2> test.out<cr><cmd>cfile test.out<cr>",
+      { desc = "[T]est current zig file" }
+    )
+    vim.keymap.set(
+      "n",
       "<leader><leader>e",
       "<cmd>w<cr><cmd>!zig build 2> errors.out<cr><cmd>cfile errors.out<cr>",
       { desc = "Build and show [E]rrors in current zig project" }
     )
-    vim.keymap.set(
-      "n",
-      "<leader><leader>x",
-      "<cmd>w<cr><cmd>!zig run % 2> errors.out<cr><cmd>cfile errors.out<cr>",
-      { desc = "e[X]ecute current zig file and show errors" }
-    )
+
+    local function run_and_get_errors()
+      vim.api.nvim_exec2("w", {})
+      local error_file = "errors.err"
+      local current_file = vim.fn.expand("%")
+      print("Executing " .. current_file)
+      local result = vim.system({ "zig", "run", current_file }, {}):wait()
+      if result.stderr ~= "" then
+        local file = assert(io.open(error_file, "w"))
+        file:write(result.stderr)
+        file:close()
+        vim.api.nvim_exec2("cfile " .. error_file, { output = false })
+        vim.print(result.stderr)
+      else
+        vim.print(result.stdout)
+      end
+    end
+
+    vim.keymap.set("n", "<leader><leader>x", function()
+      run_and_get_errors()
+    end, { desc = "e[X]ecute current zig file and show errors" })
 
     -- useful for ziglings
     vim.keymap.set("n", "c?", "/???<cr>3xi", { desc = "Change next '???'" })
