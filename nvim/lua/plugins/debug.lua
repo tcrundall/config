@@ -25,6 +25,7 @@ return {
     -- "NicholasMata/nvim-dap-cs",
     "nvim-treesitter/nvim-treesitter",
   },
+
   config = function()
     local dap = require("dap")
     local dapui = require("dapui")
@@ -127,7 +128,7 @@ return {
     -- configure for csharp from blog post: https://aaronbos.dev/posts/debugging-csharp-neovim-nvim-dap
     -- dap.adapters.coreclr = {
     --   type = "executable",
-    --   command = "/home/crundallt/.local/share/nvim/mason/bin/netcoredbg",
+    --   command = vim.fn.expand("~/.local/share/nvim/mason/bin/netcoredbg"),
     --   args = { "--interpreter=vscode" },
     -- }
     --
@@ -232,7 +233,6 @@ return {
 
     local ts_utils = require("nvim-treesitter.ts_utils")
 
-    local UNSET = "UNSET"
     local debug_process_id = ""
 
     local function get_csharp_method_name()
@@ -338,7 +338,7 @@ return {
       },
     }
 
-    local netcoredbg_cmd = vim.fn.expand("~") .. "/.local/share/nvim/mason/bin/netcoredbg"
+    local netcoredbg_cmd = vim.fn.expand("~/.local/share/nvim/mason/bin/netcoredbg")
     dap.adapters.coreclr = {
       type = "executable",
       command = netcoredbg_cmd,
@@ -346,5 +346,35 @@ return {
     }
 
     dap.configurations.cs = cs_config
+
+    -- LLDB debug configuration for zig
+    dap.adapters.lldb = {
+      type = "executable",
+      command = vim.fn.expand("~/opt/LLVM-19.1.7-Linux-X64/bin/lldb-dap"),
+      name = "lldb",
+    }
+
+    dap.configurations.zig = {
+      {
+        name = "Launmch",
+        type = "lldb",
+        request = "launch",
+        program = function()
+          return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+        end,
+        cwd = "${workspaceFolder}",
+        stopOnEntry = false,
+        args = {},
+        runInTerminal = false,
+      },
+    }
+
+    -- Install zig specific config
+    vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+      pattern = "*.zig",
+      callback = function()
+        require("dap-go").setup()
+      end,
+    })
   end,
 }
