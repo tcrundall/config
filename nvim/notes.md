@@ -10,6 +10,7 @@ Go to [waiting for](#waiting-for)
 
 ## Wishlist
 
+- [ ] Only parse one C# project at a time
 - [ ] pretty yaml [injection for gotmpl](https://github.com/ngalaiko/tree-sitter-go-template)
 - [ ] csharpls decompile and go-to dependencies
 - [ ] Implement [spell check](https://www.reddit.com/r/neovim/comments/1fcidod/cspell_for_neovim/)
