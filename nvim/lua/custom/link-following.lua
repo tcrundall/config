@@ -24,7 +24,7 @@ end
 
 local function jump_to_url(link)
   link = link:gsub("#", "\\#")
-  vim.fn.execute("!google-chrome " .. link, "silent")
+  vim.fn.execute("!open " .. link, "silent")
 end
 
 local function jump_to_file(address)
