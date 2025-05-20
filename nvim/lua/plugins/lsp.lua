@@ -188,13 +188,26 @@ return { -- LSP Configuration & Plugins
         -- },
       },
       gopls = {},
+
+      -- see https://microsoft.github.io/pyright/#/settings for list of settings
       pyright = {
-        openFilesOnly = false,
-        analysis = {
-          autoSearchPaths = true,
-          useLibraryCodeForTypes = true,
-          diagnosticMode = "workspace",
-          exclude = { ".venv" },
+        settings = {
+          pyright = {
+            disableLanguageServices = false,
+            disableOrganizeImports = true,
+            openFilesOnly = false,
+            disableTaggedHints = true,
+          },
+          python = {
+            analysis = {
+              autoSearchPaths = true,
+              useLibraryCodeForTypes = true,
+              diagnosticMode = "workspace",
+              exclude = { ".venv" },
+              typeCheckingMode = "standard",
+              ignore = { vim.fn.expand("~/.local/share/uv/python") },
+            },
+          },
         },
       },
       -- r_language_server = {},
