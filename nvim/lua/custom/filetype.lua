@@ -103,10 +103,10 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 
     vim.keymap.set("n", "<leader><leader>b", "<cmd>w<cr><cmd>!zig build<cr>", { desc = "[B]uild current zig project" })
     vim.keymap.set("n", "<leader><leader>r", "<cmd>w<cr><cmd>!zig run %<cr>", { desc = "[R]un current zig file" })
-    vim.keymap.set("n", "<leader><leader>t", "<cmd>w<cr><cmd>!zig test %<cr>", { desc = "[T]est current zig file" })
+    vim.keymap.set("n", "<leader><leader>T", "<cmd>w<cr><cmd>!zig test %<cr>", { desc = "[T]est current zig file" })
     vim.keymap.set(
       "n",
-      "<leader><leader>T",
+      "<leader><leader>t",
       "<cmd>w<cr><cmd>!zig test % 2> test.out<cr><cmd>cfile test.out<cr>",
       { desc = "[T]est current zig file" }
     )

@@ -1,2 +1,5 @@
 # Nvim compiled
 nvim/plugin
+
+# Private(?) spelling lists
+*.spl
