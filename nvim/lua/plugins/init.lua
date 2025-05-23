@@ -135,7 +135,9 @@ return {
       require("catppuccin").setup({
         transparent_background = false,
       })
-      -- vim.cmd.colorscheme("catppuccin-latte")
+      if vim.env.THEME == "LIGHT_MODE" then
+        vim.cmd.colorscheme("catppuccin-latte")
+      end
     end,
   },
 
@@ -152,10 +154,9 @@ return {
         },
       }
       require("tokyonight").setup(opts)
-      vim.cmd.colorscheme("tokyonight-night")
-      -- vim.cmd.colorscheme("tokyonight-day")
-      -- You can configure highlights by doing something like
-      -- vim.cmd.hi 'Comment gui=none'
+      if vim.env.THEME ~= "LIGHT_MODE" then
+        vim.cmd.colorscheme("tokyonight-night")
+      end
     end,
   },
 
