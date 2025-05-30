@@ -302,12 +302,12 @@ return { -- LSP Configuration & Plugins
     --  You can press `g?` for help in this menu
     require("mason").setup()
 
-    -- You can add other tools here that you want Mason to install
-    -- for you, so that they are available from within Neovim.
-    local ensure_installed = vim.tbl_keys(servers or {})
-    vim.list_extend(ensure_installed, {
-      "stylua", -- Used to format lua code
-    })
+    -- -- You can add other tools here that you want Mason to install
+    -- -- for you, so that they are available from within Neovim.
+    -- local ensure_installed = vim.tbl_keys(servers or {})
+    -- vim.list_extend(ensure_installed, {
+    --   "stylua", -- Used to format lua code
+    -- })
 
     -- later versions have an issue https://github.com/OmniSharp/omnisharp-roslyn/issues/2574
     -- trying to pin, following this, didn't work:
