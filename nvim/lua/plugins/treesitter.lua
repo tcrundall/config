@@ -21,6 +21,7 @@ return { -- Highlight, edit, and navigate code
         "javascript",
         "query", -- TODO: Determine what this is for
         "helm",
+        "json",
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
