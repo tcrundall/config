@@ -31,14 +31,15 @@ return {
   --   "tcrundall/gtd.nvim",
   --   opts = {},
   -- },
-  {
-    dir = "~/Repos/gtd.nvim",
-    opts = {},
-  },
-  {
-    dir = "~/Repos/codepilot.nvim",
-    opts = {},
-  },
+  -- -- Comment out local for now
+  -- {
+  --   dir = "~/Repos/gtd.nvim",
+  --   opts = {},
+  -- },
+  -- {
+  --   dir = "~/Repos/codepilot.nvim",
+  --   opts = {},
+  -- },
 
   -- Unfortunately isn't great at syntax highlighting... maybe I can turn it off somehow?
   -- 'ixru/nvim-markdown', -- pretty markdown with link concealment
