@@ -8,19 +8,7 @@ return { -- Highlight, edit, and navigate code
     require("nvim-treesitter.configs").setup({
       ensure_installed = {
         "bash",
-        "c",
-        "html",
-        "lua",
         "markdown",
-        "vim",
-        "vimdoc",
-        "python",
-        "go",
-        "yaml",
-        "typescript",
-        "javascript",
-        "query", -- TODO: Determine what this is for
-        "helm",
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
