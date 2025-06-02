@@ -118,10 +118,8 @@ return {
     lazy = false,
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
-      require("catppuccin").setup({
-        transparent_background = true,
-      })
-      -- vim.cmd.colorscheme("catppuccin-latte")
+      require("catppuccin").setup({})
+      vim.cmd.colorscheme("catppuccin-mocha")
     end,
   },
 
@@ -137,8 +135,8 @@ return {
           -- sidebars = "none",
         },
       }
-      require("tokyonight").setup(opts)
-      vim.cmd.colorscheme("tokyonight-night")
+      -- require("tokyonight").setup(opts)
+      -- vim.cmd.colorscheme("tokyonight-night")
       -- vim.cmd.colorscheme("tokyonight-day")
       -- You can configure highlights by doing something like
       -- vim.cmd.hi 'Comment gui=none'
