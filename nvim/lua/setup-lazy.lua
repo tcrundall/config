@@ -6,7 +6,7 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 -- -- include custom plugin
--- vim.opt.rtp:prepend(vim.fn.expand("~/Repos/gtd.nvim/"))
+-- vim.opt.rtp:prepend(vim.fn.expand("~/repos/gtd.nvim/"))
 
 -- [[ Configure and install plugins ]]
 local opts = {

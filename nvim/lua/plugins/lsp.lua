@@ -169,9 +169,9 @@ return { -- LSP Configuration & Plugins
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
     local servers = {
       robotframework_ls = {
-        pythonpath = "/home/crundallt/Repos/chimerys/local-platform/ardia-server-setup/.venv/lib/",
+        pythonpath = "/home/crundallt/repos/chimerys/local-platform/ardia-server-setup/.venv/lib/",
         python = {
-          executable = "/home/crundallt/Repos/chimerys/local-platform/ardia-server-setup/.venv/bin/python",
+          executable = "/home/crundallt/repos/chimerys/local-platform/ardia-server-setup/.venv/bin/python",
         },
       },
       bashls = {},

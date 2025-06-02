@@ -26,17 +26,8 @@ return {
     end,
   },
 
-  -- custom plugin
-  -- {
-  --   "tcrundall/gtd.nvim",
-  --   opts = {},
-  -- },
   {
-    dir = "~/Repos/gtd.nvim",
-    opts = {},
-  },
-  {
-    dir = "~/Repos/codepilot.nvim",
+    dir = "~/repos/codepilot.nvim",
     opts = {},
   },
 

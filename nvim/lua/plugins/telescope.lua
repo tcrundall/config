@@ -95,11 +95,11 @@ return { -- Fuzzy Finder (files, lsp, etc)
     end)
 
     vim.keymap.set("n", "<leader>ec", function()
-      builtin.find_files({ cwd = "~/Repos/config/nvim/" })
+      builtin.find_files({ cwd = "~/repos/config/nvim/" })
     end)
 
     vim.keymap.set("n", "<leader>en", function()
-      builtin.find_files({ cwd = "~/Repos/notes/" })
+      builtin.find_files({ cwd = "~/repos/notes/" })
     end)
 
     vim.keymap.set("n", "<leader>ep", function()
