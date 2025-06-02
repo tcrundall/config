@@ -112,5 +112,4 @@ vim.keymap.set(
 
 -- edit log
 local path_to_logs = vim.env.LOG_PATH or "~/log.md"
-print("Log path: ", vim.env.LOG_PATH)
-vim.keymap.set("n", "<leader>el", "<cmd>vsplit " .. path_to_logs .. "<cr>Gzz", {})
+vim.keymap.set("n", "<leader>el", "<cmd>vsplit " .. path_to_logs .. "<cr>zz", {})
